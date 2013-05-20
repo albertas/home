@@ -1,0 +1,13 @@
+[user]
+	name = Strazdas
+	email = strazdas@pov.lt
+[color]
+        ui = true
+[alias]
+        lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+        st = status
+        plush = !git pull -r && git push
+        dc = diff --cached
+        di = diff
+        ci = commit
+        glog = log --graph

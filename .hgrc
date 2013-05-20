@@ -1,0 +1,37 @@
+[ui]
+username = Albertas Gimbutas <albertasgim@gmail.com>
+merge = kdiff3
+
+[merge-tools]
+kdiff3.args = $base $local $other -o $output
+
+[extensions]
+hgext.extdiff =
+hgext.convert = 
+hgext.fetch = 
+hgext.rebase = 
+hgext.churn =
+hgext.color = 
+hgext.mq =
+hgext.graphlog =
+transplant =
+hgext.bookmarks =
+
+
+[extdiff]
+cmd.vdiff = meld
+cmd.vkdiff = kdiff3
+cmd.vimdiff =
+
+[merge-tools]
+kdiff3.args=--L1 base --L2 local --L3 other $base $local $other -o $output
+
+
+[alias]
+vi = vimdiff
+vim = vimdiff
+slog = log --limit 24 --template '{rev} {date|age} {author|person} {desc|firstline}\n'
+
+[defaults]
+log = --limit 8 --template '\033[0;33m{rev}\033[1;30m {date|age}\t{date|isodate}\t\033[0;33m{author|person}\033[0m {branches}{tags}\n{desc|firstline|strip}\n\n' 
+glog = --limit 8 --template '\033[0;33m{rev}\033[1;30m {date|age}\t{date|isodate}\t\033[0;33m{author|person}\033[0m {branches}{tags}\n{desc|firstline|strip}\n\n' 
