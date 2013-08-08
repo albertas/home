@@ -1,5 +1,5 @@
 [user]
-	name = Strazdas
+	name = strazdas
 	email = strazdas@pov.lt
 [color]
         ui = true
@@ -11,3 +11,9 @@
         di = diff
         ci = commit
         glog = log --graph
+        mt = mergetool -y   # git rebase --continue   # to merge conflicts
+        # git ci -am "<message>"  # commits modified files
+        # $ gitg  # GUI for change review
+        # $ tig   # shell tool for change review
+[core]
+	editor = vim
