@@ -54,7 +54,7 @@ let mapleader = ","
 
 let g:pyflakes_use_quickfix = 0
 
-let g:snips_author = "sirex"
+let g:snips_author = "strazdas"
 
 " mappings
 map     <F2>        :update<CR>
@@ -73,6 +73,8 @@ map     <SPACE>     ^
 imap    <C-SPACE>   <C-R>"
 cmap    <C-SPACE>   <C-R><C-W>
 map     <C-TAB>     <C-W>w
+map     ;i          iimport ipdb; ipdb.set_trace()<esc>
+map     ;d          O<esc>:.! date "+\%Y-\%m-\%d"<Enter>A[]<esc>hx<Space>P<CR>
 
 " Return back where you was.
 nn <c-h> <c-o>
