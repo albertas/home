@@ -45,6 +45,10 @@ set mouse=
 set scrolloff=2                 " always keep cursor 2 lines from screen edge
 set nostartofline               " don't jump to start of line
 
+"set text paragraph folding with za zM zR
+set fde=getline(v:lnum)=~'^\\s*$'&&getline(v:lnum+1)=~'\\S'?'<1':1
+set fdm=expr
+
 "set spell
 set spelllang=lt,en
 
@@ -73,7 +77,7 @@ map     <SPACE>     ^
 imap    <C-SPACE>   <C-R>"
 cmap    <C-SPACE>   <C-R><C-W>
 map     <C-TAB>     <C-W>w
-map     ;i          iimport ipdb; ipdb.set_trace()<esc>
+map     ;i          oimport ipdb; ipdb.set_trace()<esc>
 map     ;d          O<esc>:.! date "+\%Y-\%m-\%d"<Enter>A[]<esc>hx<Space>P<CR>
 
 " Return back where you was.
