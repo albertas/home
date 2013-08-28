@@ -15,5 +15,7 @@
         # git ci -am "<message>"  # commits modified files
         # $ gitg  # GUI for change review
         # $ tig   # shell tool for change review
+        # git merge --no-ff   # Merges without removing merge history
+        # git clean -dfx      # Removes all uncommited files
 [core]
 	editor = vim
