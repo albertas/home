@@ -4,14 +4,14 @@
 [color]
         ui = true
 [alias]
-        lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+        lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset %Cgreen(%ci)' --abbrev-commit --
         st = status
         plush = !git pull -r && git push
         dc = diff --cached
         di = diff
         ci = commit
         glog = log --graph
-        mt = mergetool -y   # git rebase --continue   # to merge conflicts
+        mt = mergetool -y --tool=kdiff3 # git rebase --continue   # to merge conflicts
         # git ci -am "<message>"  # commits modified files
         # $ gitg  # GUI for change review
         # $ tig   # shell tool for change review
