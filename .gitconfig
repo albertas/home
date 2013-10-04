@@ -10,6 +10,8 @@
         dc = diff --cached
         di = diff
         ci = commit
+        ch = checkout
+        re = reset
         glog = log --graph
         mt = mergetool -y --tool=kdiff3 # git rebase --continue   # to merge conflicts
         # git ci -am "<message>"  # commits modified files
@@ -19,3 +21,5 @@
         # git clean -dfx      # Removes all uncommited files
 [core]
 	editor = vim
+[push]
+	default = current
