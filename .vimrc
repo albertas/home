@@ -25,10 +25,12 @@ set incsearch
 set nohlsearch
 set number
 set nowrap
+set undofile
+set undodir=~/.vim/undo/
 
 set expandtab
 set textwidth=79
-set tabstop=8
+set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set autoindent
@@ -80,6 +82,9 @@ map     <C-TAB>     <C-W>w
 map     ;i          oimport ipdb; ipdb.set_trace()<esc>
 map     ;d          O<esc>:.! date "+\%Y-\%m-\%d"<Enter>A[]<esc>hx<Space>P<CR>
 map     ;j          :call g:Jsbeautify()<CR>
+map     ;c          aconsole.log();<CR>
+map     ;a          :w<CR>:!make<CR>
+map     da          GVggxi
 
 " Return back where you was.
 nn <c-h> <c-o>
