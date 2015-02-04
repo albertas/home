@@ -25,6 +25,8 @@ set incsearch
 set nohlsearch
 set number
 set nowrap
+set undofile
+set undodir=~/.vim/undo/
 
 set expandtab
 set textwidth=79
