@@ -195,6 +195,10 @@ set nostartofline
 set ignorecase
 set incsearch
 set nohlsearch
+set number
+set nowrap
+set undofile
+set undodir=~/.vim/undo/
 
 " Tabs
 set expandtab
