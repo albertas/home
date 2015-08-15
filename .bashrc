@@ -13,8 +13,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=
+HISTFILESIZE=
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -106,5 +106,23 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-PS1='\A \w$ '
+PS1='\A \W$ ' # '\A \w>\n$
 export TERM=xterm-256color
+#export REUSE_DB=1
+export REUSE_DB=0
+
+export CLICOLOR='true'
+export LSCOLORS="gxfxcxdxbxegedabagacad"
+
+alias changes="git dc | colordiff"
+alias ls='ls --hide="*.pyc" --color=auto'
+alias open=xdg-open
+alias m='vim ~/me.rst'
+alias d='vim ~/diary.rst'
+alias t='vim ~/todo.rst'
+alias p='ipython'
+alias c='vim ~/ChangeLog'
+alias blender='/home/strazdas/blender/blender'
+alias tox='/home/strazdas/qTox/qtox &'
+alias dice='~/./roll_dice.py'
+alias ..='cd ..'
