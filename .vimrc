@@ -97,14 +97,14 @@ map     ;a          :w<CR>:!make<CR>
 map     ;s          :w<CR>:!python %<CR>
 map     ;y          "+y
 map     ;p          "+p
-map     da          GVggxi
+" map     da          GVggxi
 map     \           gc
 
-set     timeoutlen=300    " Remove delay after delete dd command
+" set     timeoutlen=300    " Remove delay after delete dd command
 
 " Jump between windows and tabs.
 nmap    <TAB>       <C-W>p
-nmap    <S-TAB>     <C-W>w
+" nmap    <S-TAB>     <C-W>w
 nmap    <M-k>       <C-W>k
 nmap    <M-j>       <C-W>j
 nmap    <M-l>       <C-W>l
