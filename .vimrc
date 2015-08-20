@@ -559,6 +559,7 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:syntastic_python_checkers = ['python', 'flake8']
 let g:syntastic_filetype_map = {'python.django': 'python'}
 let g:syntastic_python_pep8_args = '--ignore=E501'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 Plugin 'UltiSnips'
 Plugin 'honza/vim-snippets'
@@ -612,6 +613,10 @@ Plugin 'benekastah/neomake'
 Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'tomtom/tcomment_vim'
+
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
+Plugin 'vim-scripts/Cpp11-Syntax-Support'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
