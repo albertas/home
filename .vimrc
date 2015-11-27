@@ -71,6 +71,7 @@ function! ToggleList(bufname, pfx)
   endif
 endfunction
 
+set makeprg=make\ test  " sirex wouldn't do this
 
 " Mappings
 let mapleader = ","
@@ -85,7 +86,7 @@ nmap    <C-F5>      :cc<CR>
 map     <F6>        <C-^>
 " vmap    <F6>        <ESC>:exec "'<,'>w !vpaste ".&ft<CR>
 nmap    <F7>        :call ToggleList("Quickfix List", 'c')<CR>
-nmap    <F8>        :silent Neomake!<CR>
+nmap    <F8>        :make!<CR>
 nmap    <F11>       :set hlsearch!<CR>
 nmap    <F12>       :setlocal spell!<CR>
 nmap    <SPACE>     ^
@@ -94,6 +95,7 @@ map     ;d          O<esc>:.! date "+\%Y-\%m-\%d"<Enter>A[]<esc>hx<Space>P<CR>
 map     ;j          :call g:Jsbeautify()<CR>
 map     ;c          oconsole.log();<esc>hi
 map     ;a          :w<CR>:!make<CR>
+map     ;t          :w<CR>:!make test<CR>
 map     ;s          :w<CR>:!python %<CR>
 map     ;y          "+y
 map     ;p          "+p
@@ -104,7 +106,7 @@ map     \           gc
 
 " Jump between windows and tabs.
 nmap    <TAB>       <C-W>p
-" nmap    <S-TAB>     <C-W>w
+nmap    <S-TAB>     <C-W>w
 nmap    <M-k>       <C-W>k
 nmap    <M-j>       <C-W>j
 nmap    <M-l>       <C-W>l
@@ -175,7 +177,7 @@ set number
 set wildmenu
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,windows-1257
-set foldmethod=marker
+" set foldmethod=syntax  " marker   - evil command - lags vim as hell
 set foldlevel=20
 set showcmd     " Show count of selected lines or characters
 set shell=/bin/sh
@@ -224,8 +226,8 @@ if v:version >= 730
     " everyone uses version control systems.
     set nobackup
     set writebackup
-    set undodir=~/.vim/var/undo
-    set undofile
+    " set undodir=~/.vim/var/undo
+    " set undofile
 else
     set backup
     set backupdir=~/.vim/var/backup
@@ -677,3 +679,8 @@ endfor
 syntax on
 nmap <C-6> :buffer #<CR>
 set backspace=2
+
+" http://vim.wikia.com/wiki/Repeat_command_on_each_line_in_visual_block
+vnoremap . :normal .<CR>
+nnoremap ` @a
+vnoremap ` :normal @q<CR>
