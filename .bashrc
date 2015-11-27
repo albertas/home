@@ -113,6 +113,8 @@ export REUSE_DB=0
 
 export CLICOLOR='true'
 export LSCOLORS="gxfxcxdxbxegedabagacad"
+export PATH=$PATH:/opt/Espressif/crosstool-NG/builds/xtensa-lx106-elf/bin
+export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
 
 alias changes="git dc | colordiff"
 alias ls='ls --hide="*.pyc" --color=auto'
@@ -121,6 +123,7 @@ alias m='vim ~/me.rst'
 alias d='vim ~/diary.rst'
 alias t='vim ~/todo.rst'
 alias p='ipython'
+alias g='gtimelog &'
 alias c='vim ~/ChangeLog'
 alias blender='/home/strazdas/blender/blender'
 alias tox='/home/strazdas/qTox/qtox &'
