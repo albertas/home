@@ -89,7 +89,7 @@ nmap    <F7>        :call ToggleList("Quickfix List", 'c')<CR>
 nmap    <F8>        :make!<CR>
 nmap    <F11>       :set hlsearch!<CR>
 nmap    <F12>       :setlocal spell!<CR>
-nmap    <SPACE>     ^
+map    <SPACE>     ^
 map     ;i          oimport ipdb; ipdb.set_trace()<esc>
 map     ;d          O<esc>:.! date "+\%Y-\%m-\%d"<Enter>A[]<esc>hx<Space>P<CR>
 map     ;j          :call g:Jsbeautify()<CR>
@@ -136,9 +136,11 @@ nmap    m/          /\<def
 nmap    g}              :stselect <c-r><c-w><cr>
 
 " Scroll half page down
-nn <c-j> <c-d>
+" nn <c-j> <c-d>
+map <c-j> <c-d>
 " Scroll half page up
-nn <c-k> <c-u>
+" nn <c-k> <c-u>
+map <c-k> <c-u>
 
 " Scroll half screen to left and right vertically
 no <s-h> zH
