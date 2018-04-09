@@ -96,11 +96,12 @@ map     ;j          :call g:Jsbeautify()<CR>
 map     ;c          oconsole.log();<esc>hi
 map     ;a          :w<CR>:!make<CR>
 map     ;t          :w<CR>:!make test<CR>
-map     ;s          :w<CR>:!python %<CR>
+map     ;s          :w<CR>:!python3 %<CR>
 map     ;y          "+y
 map     ;p          "+p
-" map     da          GVggxi
+map     ;da          GVggxi
 map     \           gc
+imap    <F10>       <nop>
 
 " set     timeoutlen=300    " Remove delay after delete dd command
 
@@ -180,7 +181,10 @@ set wildmenu
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,windows-1257
 " set foldmethod=syntax  " marker   - evil command - lags vim as hell
+" set foldlevel=20
+set foldmethod=indent
 set foldlevel=20
+set foldclose=all " zo zc zm zr zR
 set showcmd     " Show count of selected lines or characters
 set shell=/bin/sh
 
@@ -559,6 +563,7 @@ Plugin 'surround.vim'
 Plugin 'Syntastic'
 let g:syntastic_enable_signs = 1
 let g:syntastic_disabled_filetypes = ['html']
+let g:syntastic_quiet_messages={'level':'warnings'}
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:syntastic_python_checkers = ['python', 'flake8']
 let g:syntastic_filetype_map = {'python.django': 'python'}
@@ -581,7 +586,7 @@ Plugin 'The-NERD-tree'
 let g:NERDTreeQuitOnOpen = 0
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize = 30
-let g:NERDTreeIgnore = ['^__pycache__$', '\.egg-info$', '\~$']
+let g:NERDTreeIgnore = ['^__pycache__$', '\.egg-info$', '\~$', '\.aux$', '\.idx$', '\.log$', '\.out$', '\.toc$', '\.bbl$', '\.bcf$', '\.blg$', '\.run.xml$']
 
 Plugin 'Tagbar'
 let g:tagbar_width = 30
@@ -612,7 +617,7 @@ Plugin 'ctrlp.vim'
 
 Plugin 'n3.vim'
 
-Plugin 'benekastah/neomake'
+" Plugin 'benekastah/neomake'
 
 Plugin 'editorconfig/editorconfig-vim'
 
@@ -621,6 +626,20 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 
 Plugin 'vim-scripts/Cpp11-Syntax-Support'
+" Plugin 'vim-scripts/Cpp11-Syntax-Support'
+
+" let g:tex_no_error=1
+" Plugin 'lervag/vimtex'
+" let g:Tex_IgnoredWarnings = "Underfull\n".
+" \"Overfull\n".
+" \"specifier changed to\n".
+" \"You have requested\n".
+" \"Missing number, treated as zero.\n".
+" \"There were undefined references\n"
+" \"Citation %.%# undefined"
+" \"Wrong length of dash may have been used"
+" let g:Tex_IgnoreLevel = 9
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -686,3 +705,13 @@ set backspace=2
 vnoremap . :normal .<CR>
 nnoremap ` @a
 vnoremap ` :normal @q<CR>
+
+" Remove trailing line spaces
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
