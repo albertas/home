@@ -97,8 +97,8 @@ map     ;c          oconsole.log();<esc>hi
 map     ;a          :w<CR>:!make<CR>
 map     ;t          :w<CR>:!make test<CR>
 map     ;s          :w<CR>:!python3 %<CR>
-map     ;y          "+y
-map     ;p          "+p
+map     ;y          "xy
+map     ;p          "xp
 map     ;da          GVggxi
 map     \           gc
 imap    <F10>       <nop>
