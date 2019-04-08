@@ -7,3 +7,4 @@ Add configs to Ubuntu
     cp -r home/.* ~/
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     vim +PluginInstall +qall
+    sudo pip3 install flake8 ipython ipdb
