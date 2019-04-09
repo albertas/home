@@ -1,0 +1,31 @@
+``j``, ``k``, ``g``, ``l`` - kursoriaus perkėlimui į gretimą poziciją
+``<space>`` - nušokti į eilutės pradžią
+``$`` - nušokti į eilutės pabaigą
+``x`` - ištrina simbolį / pažymėtą sritį
+``o``, ``O`` - naujos eilutės pridėjimas po ir virš kursoriaus
+``p``, ``P`` - paste'inti po kursoriaus ir prieš
+``u``, ``ctr r`` - undo, redo
+``y``, ``yw``, ``yy``, ``yt<symbol>``, ``yf<symbol>`` - nukopijuoja, žodį, eilutę, tekstą iki nurodyto simbolio, įskaitant simbolį 
+``d``, ``dw``, ``dd``, ``dt<symbol>``, ``dt<symbol>`` - ištrina žodį, eilutę, tekstą iki nurodyto simbolio, įskaitant simbolį *Pastaba*: vim'e viskas yra cut'inama, o ne trinama
+``e``, ``w``, ``b`` - šokti per žodį, prie sekančio, prie buvusio
+``:`` - pereiti į komandų įvedimo rėžimą
+   ``w`` - išsaugoti pakeitimus
+   ``q``, ``q!``, ``wq`` - uždaryti vim'ą, uždaryti neišsaugojus, išsaugoti ir uždaryti
+   ``esc`` - išeiti iš rėžimo
+   ``<number>enter`` - go to line
+``i``, ``a``, ``R`` - rašimo, perrašimo rėžimai
+``v``, ``shift v``, - pažymėjimo rėžimai: simboliais, eilutėmis
+``ctr v`` - bloko pažymėjimo rėžimas 
+   ``I<tekstas>esc`` - įterpti nurodyta tekstą prieš pažymėtą bloką
+``J`` - sujungti dvi eilutes
+``gqq`` - tinkamai suskaidyti eilutę į kelias
+``/<paieškos tekstas>`` - ieško atitinkamo teksto, paspaudus ``enter`` jį įsimena, tada galima pakartotinai atlikti paiešką su ``n``, ``N`` - toliau, atgal
+``ctr w`` -> ``j``, ``k``, ``c``, ``o`` - įvykdoma komanda skirta langams organizuoti, peršoka, uždaro aktyvų, palieka aktyvų
+``ctr j``, ``ctr k`` - autocompleate'inti ieškant į apačią, į viršų
+``S`` - ištrinti iki eilutės pradžios
+``#`` ``*`` - šokti prie prieš tai buvusio tokio paties žodžio, prie būsimo 
+``"+<command>`` - dirbti su clipboard buffer'iu
+``ctr t``, ``ctr }``, ``ctr h`` - šokti prie elemento apibrėžimo (reikalingas ctags modulis), grįžti iš apibrėžimo
+``F3`` - prieš tai atidarytų langų sąrašas.
+``F4`` - atidaryti failų medį, kuriame galima naviguoti per failus. Paspaudus ``m`` galima kurti naujus failus, juos pervadinti.
+``F6`` - grįžti prie prieš tai buvusio lango
