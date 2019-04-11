@@ -23,3 +23,5 @@
 	editor = vim
 [push]
 	default = current
+[grep]                                                                                                                           
+        linenumber = true 
