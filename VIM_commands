@@ -17,6 +17,7 @@
 ``v``, ``shift v``, - pažymėjimo rėžimai: simboliais, eilutėmis
 ``ctr v`` - bloko pažymėjimo rėžimas 
    ``I<tekstas>esc`` - įterpti nurodyta tekstą prieš pažymėtą bloką
+    ``\`` - comment or uncomment selected lines.
 ``J`` - sujungti dvi eilutes
 ``gqq`` - tinkamai suskaidyti eilutę į kelias
 ``/<paieškos tekstas>`` - ieško atitinkamo teksto, paspaudus ``enter`` jį įsimena, tada galima pakartotinai atlikti paiešką su ``n``, ``N`` - toliau, atgal
@@ -29,3 +30,4 @@
 ``F3`` - prieš tai atidarytų langų sąrašas.
 ``F4`` - atidaryti failų medį, kuriame galima naviguoti per failus. Paspaudus ``m`` galima kurti naujus failus, juos pervadinti.
 ``F6`` - grįžti prie prieš tai buvusio lango
+``qq``, record macro ``q``, go to line ``@q`` - repeat macro. 
