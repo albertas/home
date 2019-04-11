@@ -101,6 +101,7 @@ map     ;y          "xy
 map     ;p          "xp
 map     ;da          GVggxi
 map     \           gc
+map     _           @q
 imap    <F10>       <nop>
 
 " set     timeoutlen=300    " Remove delay after delete dd command
@@ -568,6 +569,7 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:syntastic_python_checkers = ['python', 'flake8']
 let g:syntastic_filetype_map = {'python.django': 'python'}
 let g:syntastic_python_pep8_args = '--ignore=E501'
+let g:syntastic_python_flake8_args = '--ignore=E501,E702,E303'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 Plugin 'UltiSnips'
