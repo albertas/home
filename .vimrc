@@ -100,6 +100,7 @@ map     ;s          :w<CR>:!python3 %<CR>
 map     ;y          "xy
 map     ;p          "xp
 map     ;da          GVggxi
+" map   ;w          :call Write, Commit everything with message bump, push.
 map     \           gc
 map     _           @q
 imap    <F10>       <nop>
