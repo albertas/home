@@ -575,6 +575,7 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 Plugin 'UltiSnips'
 Plugin 'honza/vim-snippets'
+Plugin 'burneyy/vim-snakemake'
 
 " Former zen coding, now renamed to emmet.
 " Key to expand: <c-y>,

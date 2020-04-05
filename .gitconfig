@@ -21,6 +21,8 @@
         # git clean -dfx      # Removes all uncommited files
 [core]
 	editor = vim
+        autocrlf = input
+        eol = lf
 [push]
 	default = current
 [grep]                                                                                                                           
