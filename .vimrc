@@ -7,32 +7,35 @@
 " Pathogen is responsible for vim's runtimepath management.
 "" call pathogen#infect()
 
-
-function! RunCurrentPythonTest()
-python3 << EOF
+function! CallMakeTestWithCurrentPythonTest()
+python << EOF
 import re
+import os
 import vim  # https://vimhelp.org/if_pyth.txt.html
 
 cursor = vim.current.window.cursor
 test_filename = vim.eval("expand('%p')")
+if os.path.basename(test_filename).startswith('test_'):
+    test_name = None
+    class_name = None
+    for line_no in range(cursor[0]-1, -1, -1):
+        line = vim.current.buffer[line_no]
+        if not test_name and line.lstrip().startswith('def'):
+            test_name = re.findall('def (\w+)\(', line)[0]
+        if not class_name and line.startswith('class'):
+            class_name = re.findall('class (\w+)\(', line)[0]
+            break
 
-test_name = None
-class_name = None
-for line_no in range(cursor[0]-1, -1, -1):
-    line = vim.current.buffer[line_no]
-    if not test_name and line.lstrip().startswith('def'):
-        test_name = re.findall('def (\w+)\(', line)[0]
-    if not class_name and line.startswith('class'):
-        class_name = re.findall('class (\w+)\(', line)[0]
-        break
-
-cmd = f'!pytest {test_filename}'
-if class_name:
-    cmd += f'::{class_name}'
-if test_name:
-    cmd += f'::{test_name}'
-print(cmd)
-# vim.command(cmd)
+    test_path = '{test_filename}'.format(test_filename=test_filename)
+    if class_name:
+        test_path += '::{class_name}'.format(class_name=class_name)
+    if test_name:
+        test_path += '::{test_name}'.format(test_name=test_name)
+    vim.command('let $TEST_ME_PLEASE="{test_path}"'.format(test_path=test_path))
+    cmd = '!TEST_ME_PLEASE={test_path} make test'.format(test_path=test_path)
+    vim.command(cmd)
+else:
+    vim.command('!make test')
 
 EOF
 endfunction
@@ -130,7 +133,7 @@ map     ;t          :w<CR>:!make test<CR>
 map     ;s          :w<CR>:!python3 %<CR>
 map     ;y          "xy
 map     ;p          "xp
-map     ;g          :call RunCurrentPythonTest()<CR>
+map     ;g          :w<CR>:call CallMakeTestWithCurrentPythonTest()<CR>
 map     ;da          GVggxi
 " map   ;w          :call Write, Commit everything with message bump, push.
 map     \           gc
