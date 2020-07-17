@@ -31,6 +31,7 @@ if os.path.basename(test_filename).startswith('test_'):
         test_path += '::{class_name}'.format(class_name=class_name)
     if test_name:
         test_path += '::{test_name}'.format(test_name=test_name)
+    print('\nRUN:', test_path, '\n')
     vim.command('let $TEST_ME_PLEASE="{test_path}"'.format(test_path=test_path))
     cmd = '!TEST_ME_PLEASE={test_path} make test'.format(test_path=test_path)
     vim.command(cmd)
