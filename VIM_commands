@@ -31,3 +31,5 @@
 ``F4`` - atidaryti failų medį, kuriame galima naviguoti per failus. Paspaudus ``m`` galima kurti naujus failus, juos pervadinti.
 ``F6`` - grįžti prie prieš tai buvusio lango
 ``qq``, record macro ``q``, go to line ``@q`` - repeat macro. 
+``zc`` - folds indented level
+``zo`` - unfolds folded place
