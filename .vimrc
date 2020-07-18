@@ -608,6 +608,7 @@ let g:syntastic_filetype_map = {'python.django': 'python'}
 let g:syntastic_python_pep8_args = '--ignore=E501'
 let g:syntastic_python_flake8_args = '--ignore=E501,E702,E303'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
+let g:syntastic_python_flake8_args="--max-line-length=99"
 
 Plugin 'UltiSnips'
 Plugin 'honza/vim-snippets'
