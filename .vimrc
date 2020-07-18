@@ -227,7 +227,7 @@ set showcmd     " Show count of selected lines or characters
 set shell=/bin/sh
 
 " Text wrapping
-set textwidth=79
+set textwidth=99
 set linebreak
 
 " Spelling
