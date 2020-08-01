@@ -7,6 +7,87 @@
 " Pathogen is responsible for vim's runtimepath management.
 "" call pathogen#infect()
 
+set nocompatible
+
+
+function! T(...)  " Default values support Vim 8.1.1310 https://github.com/vim/vim/commit/42ae78cfff171fbd7412306083fe200245d7a7a6
+python3 << EOF
+
+from datetime import datetime, timedelta
+import vim, math, os
+
+def log_doing(doing):
+    '''Note: Could add tags for activity filtering'''
+
+    if not doing:
+        print('pass')
+        return
+
+    if not doing.isdigit():
+        vim.eval('timer_stopall()')
+
+        doing_prev = vim.eval("get(g:, 'doing', '')")
+        doing_started_at = vim.eval("get(g:, 'doing_started_at', '')")
+        if doing_started_at:
+            doing_started_at = datetime.fromtimestamp(int(doing_started_at))
+
+        with open(os.path.expanduser('~/.vim/var/logs'), 'a') as f:
+            now = datetime.now().replace(microsecond=0)
+            log = f'{now}'
+
+            duration_part = '        '
+            if doing_prev and '**' not in doing:
+                duration = now - doing_started_at
+                if duration < timedelta(hours=5):
+                    duration_part = f' {duration}'
+
+            log += f'{duration_part} | {doing}\n'
+            f.write(log)
+
+        vim.command(f'let g:doing = "{doing}"')
+        vim.command(f'let g:doing_started_at = "{int(datetime.now().timestamp())}"')
+        
+        show_doing_for = datetime.now() + timedelta(minutes=5)
+        vim.command(f'let g:show_doing_for = {show_doing_for.timestamp()}')
+        vim.command("call timer_start(10000, 'T', {'repeat': 30})")
+    else:
+        doing = vim.eval('g:doing')
+        vim.command(f'let g:doing_started_at = "{int(datetime.now().timestamp())}"')
+        show_doing_for = datetime.fromtimestamp(float(vim.eval("get(g:, 'show_doing_for', '0')")))
+
+    time_left = show_doing_for - datetime.now()
+    minutes = math.ceil(time_left.total_seconds()) // 60
+    seconds = math.ceil(time_left.total_seconds()) % 60
+    if minutes > 0 or seconds > 0: 
+        print(f"  {doing}   {minutes}:{seconds:02d}")
+    else:
+        print(f"  {doing}")
+        vim.eval('timer_stopall()')
+
+doing = vim.eval("get(a:, 1, '')")
+log_doing(doing)
+
+EOF
+endfunction
+
+
+function! TestVS() range
+    " This is an example how to get selection range in vimscript-Python
+    let startline = line("'<")
+    let endline = line("'>")
+    echo "vim-start:".startline . " vim-endline:".endline
+python3 << EOF
+import vim
+s = "I was set in python"
+vim.command("let sInVim = '%s'"% s)
+start = vim.eval("startline")
+end = vim.eval("endline")
+print("start, end in python:%s,%s"% (start, end))
+EOF
+    echo sInVim
+endfunction
+
+
 function! CallMakeTestWithCurrentPythonTest()
 python << EOF
 import re
@@ -41,8 +122,26 @@ else:
 EOF
 endfunction
 
+" function! LoadNestedList()
+" python3 << EOF
+" import sys
+" sys.path.append('/home/niekas/.vim')
+"
+" from nested_list import load_state
+" load_state()
+" EOF
+" endfunction
 
-set nocompatible
+
+" function! SaveNestedList()
+" python3 << EOF
+" import sys
+" sys.path.append('/home/niekas/.vim')
+"
+" from nested_list import save_state
+" save_state()
+" EOF
+" endfunction
 
 
 function! ToggleNERDTreeAndTagbar()
@@ -127,16 +226,21 @@ nmap    <F12>       :setlocal spell!<CR>
 map    <SPACE>     ^
 map     ;i          oimport ipdb; ipdb.set_trace()<esc>
 map     ;d          O<esc>:.! date "+\%Y-\%m-\%d"<Enter>A[]<esc>hx<Space>P<CR>
+map     ;f          o<esc>:.! date "+\%Y-\%m-\%d \%H:\%M"<Enter>A[]<Space><esc>hhx<Space>P$a
 map     ;j          :call g:Jsbeautify()<CR>
 map     ;c          oconsole.log();<esc>hi
+" map     ;a          :w<CR>:!snakemake<CR>
 map     ;a          :w<CR>:!make<CR>
 map     ;t          :w<CR>:!make test<CR>
+" :w<CR>:!snakemake test<CR>
 map     ;s          :w<CR>:!python3 %<CR>
 map     ;y          "xy
 map     ;p          "xp
-map     ;g          :w<CR>:call CallMakeTestWithCurrentPythonTest()<CR>
 map     ;da          GVggxi
-" map   ;w          :call Write, Commit everything with message bump, push.
+" map     ;z          :call LoadNestedList()<CR>
+" map     ;q          :call SaveNestedList()<CR>:q!
+map     ;g          :call CallMakeTestWithCurrentPythonTest()<CR>
+map     ;q          :call T('')<Left><Left>
 map     \           gc
 map     _           @q
 imap    <F10>       <nop>
