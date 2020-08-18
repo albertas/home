@@ -700,6 +700,15 @@ let g:bufExplorerShowRelativePath=1
 " let g:pymode_lint_cwindow = 0
 " nmap <C-c>i :PymodeRopeAutoImport<CR>
 
+Plugin 'davidhalter/jedi-vim'
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#rename_command = "<leader>r"
+" let g:jedi#goto_definitions_command = ""
+" let g:jedi#documentation_command = "K"
+" let g:jedi#completions_command = "<C-Space>"
+
 Plugin 'surround.vim'
 
 Plugin 'Syntastic'
