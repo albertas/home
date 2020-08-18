@@ -101,7 +101,7 @@ if os.path.basename(test_filename).startswith('test_'):
     class_name = None
     for line_no in range(cursor[0]-1, -1, -1):
         line = vim.current.buffer[line_no]
-        if not test_name and line.lstrip().startswith('def'):
+        if not test_name and line.lstrip().startswith('def test'):
             test_name = re.findall('def (\w+)\(', line)[0]
         if not class_name and line.startswith('class'):
             class_name = re.findall('class (\w+)\(', line)[0]
