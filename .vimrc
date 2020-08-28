@@ -89,7 +89,7 @@ endfunction
 
 
 function! CallMakeTestWithCurrentPythonTest()
-python << EOF
+python3 << EOF
 import re
 import os
 import vim  # https://vimhelp.org/if_pyth.txt.html
@@ -107,11 +107,20 @@ if os.path.basename(test_filename).startswith('test_'):
             class_name = re.findall('class (\w+)\(', line)[0]
             break
 
-    test_path = '{test_filename}'.format(test_filename=test_filename)
-    if class_name:
-        test_path += '::{class_name}'.format(class_name=class_name)
-    if test_name:
-        test_path += '::{test_name}'.format(test_name=test_name)
+    run_py_test_format = vim.eval("get(g:, 'run_py_test_format', '')")
+    if run_py_test_format == 'dotted':
+        test_path = '{test_filename}'.format(test_filename=test_filename)[:-3].replace('/', '.')
+        if class_name:
+            test_path += '.{class_name}'.format(class_name=class_name)
+        if test_name:
+            test_path += '.{test_name}'.format(test_name=test_name)
+    else:
+        test_path = '{test_filename}'.format(test_filename=test_filename)
+        if class_name:
+            test_path += '::{class_name}'.format(class_name=class_name)
+        if test_name:
+            test_path += '::{test_name}'.format(test_name=test_name)
+
     print('\nRUN:', test_path, '\n')
     vim.command('let $TEST_ME_PLEASE="{test_path}"'.format(test_path=test_path))
     cmd = '!TEST_ME_PLEASE={test_path} make test'.format(test_path=test_path)
@@ -683,7 +692,13 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin("~/.vim/vundle")
 
+
 Plugin 'gmarik/Vundle.vim'
+
+Plugin 'lervag/file-line'
+let g:file_line_crosshairs=0
+
+let g:run_py_test_format = "dotted"
 
 Plugin 'bufexplorer.zip'
 "   Do not show buffers from other tabs.
@@ -705,9 +720,10 @@ let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#rename_command = "<leader>r"
-" let g:jedi#goto_definitions_command = ""
-" let g:jedi#documentation_command = "K"
-" let g:jedi#completions_command = "<C-Space>"
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = "K"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#completions_enabled = 0
 
 Plugin 'surround.vim'
 
