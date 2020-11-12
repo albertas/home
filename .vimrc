@@ -11,6 +11,8 @@ set nocompatible
 
 
 function! T(...)  " Default values support Vim 8.1.1310 https://github.com/vim/vim/commit/42ae78cfff171fbd7412306083fe200245d7a7a6
+    let startline = line("'<")
+    let endline = line("'>")
 python3 << EOF
 
 from datetime import datetime, timedelta
@@ -19,11 +21,16 @@ import vim, math, os
 def log_doing(doing):
     '''Note: Could add tags for activity filtering'''
 
-    if not doing:
-        print('pass')
-        return
-
     if not doing.isdigit():
+        start = int(vim.eval("startline"))
+        end = int(vim.eval("endline"))
+        if start and not doing:
+            doing = vim.current.buffer[start - 1].strip()
+            
+        if not doing:
+            print('Please select a task')
+            return
+
         vim.eval('timer_stopall()')
 
         doing_prev = vim.eval("get(g:, 'doing', '')")
