@@ -52,7 +52,6 @@ def log_doing(doing):
         vim.command("call timer_start(10000, 'T', {'repeat': 30})")
     else:
         doing = vim.eval('g:doing')
-        vim.command(f'let g:doing_started_at = "{int(datetime.now().timestamp())}"')
         show_doing_for = datetime.fromtimestamp(float(vim.eval("get(g:, 'show_doing_for', '0')")))
 
     time_left = show_doing_for - datetime.now()
