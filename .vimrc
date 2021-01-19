@@ -704,7 +704,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'lervag/file-line'
 let g:file_line_crosshairs=0
 
-let g:run_py_test_format = "dotted"
+let g:run_py_test_format = "pytest"
 
 Plugin 'bufexplorer.zip'
 "   Do not show buffers from other tabs.
@@ -881,6 +881,9 @@ set backspace=2
 vnoremap . :normal .<CR>
 nnoremap ` @a
 vnoremap ` :normal @q<CR>
+
+" https://vim.fandom.com/wiki/Search_for_visually_selected_text
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " Remove trailing line spaces
 fun! <SID>StripTrailingWhitespaces()
