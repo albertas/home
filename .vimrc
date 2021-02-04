@@ -263,8 +263,8 @@ imap    <F10>       <nop>
 " set     timeoutlen=300    " Remove delay after delete dd command
 
 " Jump between windows and tabs.
-nmap    <TAB>       <C-W>p
-nmap    <S-TAB>     <C-W>w
+" nmap    <TAB>       <C-W>p   " These two commands break <C-i> command
+" nmap    <S-TAB>     <C-W>w
 nmap    <M-k>       <C-W>k
 nmap    <M-j>       <C-W>j
 nmap    <M-l>       <C-W>l
