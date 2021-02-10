@@ -254,7 +254,7 @@ map     ;p          "xp
 map     ;da          GVggxi
 " map     ;z          :call LoadNestedList()<CR>
 " map     ;q          :call SaveNestedList()<CR>:q!
-map     ;g          :call CallMakeTestWithCurrentPythonTest()<CR>
+map     ;g          :w<CR>:call CallMakeTestWithCurrentPythonTest()<CR>
 map     ;q          :call T('')<Left><Left>
 map     \           gc
 map     _           @q
