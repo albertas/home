@@ -712,6 +712,11 @@ let g:bufExplorerFindActive=0
 let g:bufExplorerShowTabBuffer=0
 let g:bufExplorerShowRelativePath=1
 
+"" These plugins should be investigated.
+" Plugin 'python-mode/python-mode'
+" Plugin 'ycm-core/YouCompleteMe'
+
+
 " Plugin 'Python-mode-klen'
 " let g:pymode_lint_checkers = ['pyflakes']
 " let g:pymode_lint_cwindow = 0
