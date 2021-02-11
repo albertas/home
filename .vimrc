@@ -249,8 +249,8 @@ map     ;a          :w<CR>:!make<CR>
 map     ;t          :w<CR>:!make test<CR>
 " :w<CR>:!snakemake test<CR>
 map     ;s          :w<CR>:!python3 %<CR>
-map     ;y          "xy
-map     ;p          "xp
+map     ;y          "+y
+map     ;p          "+p
 map     ;da          GVggxi
 " map     ;z          :call LoadNestedList()<CR>
 " map     ;q          :call SaveNestedList()<CR>:q!
