@@ -109,7 +109,7 @@ fi
 if [[ `id -u` -ne 0 ]] ; then
     PS1='\A \W$'
 else
-    PS1='\A \W\e[0;38;5;155m$ \e[m'
+    PS1='\A \W\e[0;32m$ \e[m'
 fi
 
 export TERM=xterm-256color
