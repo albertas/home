@@ -106,7 +106,12 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-PS1='\A \W$ ' # '\A \w>\n$
+if [[ `id -u` -ne 0 ]] ; then
+    PS1='\A \W$'
+else
+    PS1='\A \W\e[0;38;5;155m$ \e[m'
+fi
+
 export TERM=xterm-256color
 #export REUSE_DB=1
 export REUSE_DB=0
