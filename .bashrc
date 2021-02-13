@@ -107,9 +107,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 if [[ `id -u` -ne 0 ]] ; then
-    PS1='\A \W$'
+    PS1='\A \W$ '
 else
-    PS1='\A \W\e[0;32m$ \e[m'
+    PS1='\A \W\[\033[0;32m\]$\[\033[00m\] '
 fi
 
 export TERM=xterm-256color
