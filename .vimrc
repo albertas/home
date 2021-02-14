@@ -772,6 +772,22 @@ let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize = 30
 let g:NERDTreeIgnore = ['^__pycache__$', '\.egg-info$', '\~$', '\.aux$', '\.idx$', '\.log$', '\.out$', '\.toc$', '\.bbl$', '\.bcf$', '\.blg$', '\.run.xml$']
 
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') |
+    \ quit | endif
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+
+" Adds syntax highlighting to NERDTree based on filetype
+" TODO need a patched font to use icons in NERD tree
+" Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plugin 'ryanoasis/vim-devicons'
+" Plugin 'ryanoasis/nerd-fonts'
+
 Plugin 'Tagbar'
 let g:tagbar_width = 30
 let g:tagbar_sort = 0

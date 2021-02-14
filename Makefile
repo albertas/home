@@ -4,5 +4,5 @@ install_vim:
 	cp -r .vim ~/
 	cp .bashrc ~/
 	cp .gitconfig ~/
-	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim || true
 	vim +PluginInstall +qall
