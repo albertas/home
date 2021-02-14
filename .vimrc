@@ -26,7 +26,7 @@ def log_doing(doing):
         end = int(vim.eval("endline"))
         if start and not doing:
             doing = vim.current.buffer[start - 1].strip()
-            
+
         if not doing:
             print('Please select a task')
             return
@@ -53,7 +53,7 @@ def log_doing(doing):
 
         vim.command(f'let g:doing = "{doing}"')
         vim.command(f'let g:doing_started_at = "{int(datetime.now().timestamp())}"')
-        
+
         show_doing_for = datetime.now() + timedelta(minutes=5)
         vim.command(f'let g:show_doing_for = {show_doing_for.timestamp()}')
         vim.command("call timer_start(10000, 'T', {'repeat': 30})")
@@ -64,7 +64,7 @@ def log_doing(doing):
     time_left = show_doing_for - datetime.now()
     minutes = math.ceil(time_left.total_seconds()) // 60
     seconds = math.ceil(time_left.total_seconds()) % 60
-    if minutes > 0 or seconds > 0: 
+    if minutes > 0 or seconds > 0:
         print(f"  {doing}   {minutes}:{seconds:02d}")
     else:
         print(f"  {doing}")
@@ -287,8 +287,8 @@ nmap    th          :tabfirst<CR>
 nmap    tl          :tablast<CR>
 
 " Quick search for python class and def statments.
-nmap    c/          /\<class 
-nmap    m/          /\<def 
+nmap    c/          /\<class
+nmap    m/          /\<def
 
 " Jump to tag in split window
 nmap    g}              :stselect <c-r><c-w><cr>
@@ -419,10 +419,10 @@ function! SilentGrep(args)
     botright copen
 endfunction
 command! -nargs=* -complete=file G call SilentGrep(<q-args>)
-nmap <leader>gg :G 
+nmap <leader>gg :G
 nmap <leader>gG :G <c-r><c-w>
 vmap <leader>gg y:G "<c-r>""<left>
-nmap <leader>gf :G <c-r>%<home><c-right> 
+nmap <leader>gf :G <c-r>%<home><c-right>
 nmap <leader>gF :G <c-r>%<home><c-right> <c-r><c-w>
 vmap <leader>gf y:G <c-r>%<home><c-right> "<c-r>""<left>
 
@@ -567,7 +567,7 @@ endf
 " if !exists("autocommands_loaded")
 "     let autocommands_loaded = 1
 "     if has("autocmd")
-" 
+"
 "         " Python
 "         " if v:version >= 703
 "         "     au BufEnter *.py    setl  colorcolumn=+1
@@ -577,39 +577,39 @@ endf
 "             " Mark trailing spaces and highlight tabs
 "             au FileType python,html  setl list
 "             au FileType python,html  setl listchars=tab:>-,trail:.,extends:>
-" 
+"
 "             " I don't want [I to parse import statements and look for modules
 "             au FileType python  setl include=
-" 
+"
 "             au FileType python  syn sync minlines=300
 "         endif
 "         au FileType python  setl formatoptions=croql
 "         au FileType python  setl shiftwidth=4
 "         au FileType python  setl expandtab
-"         au FileType python  setl softtabstop=4 
-" 
+"         au FileType python  setl softtabstop=4
+"
 "         " SnipMate
 "         autocmd FileType python set ft=python.django
 "         autocmd FileType html set ft=htmldjango.html
-" 
+"
 "         " Makefile
 "         au FileType make    setl noexpandtab
 "         au FileType make    setl softtabstop=8
 "         au FileType make    setl shiftwidth=8
-" 
+"
 "         " UltiSnips
 "         au FileType snippets setl noexpandtab
 "         au FileType snippets setl softtabstop=8
 "         au FileType snippets setl shiftwidth=8
-" 
+"
 "         " SASS
 "         au FileType sass    setl softtabstop=2
 "         au FileType sass    setl shiftwidth=2
-" 
+"
 "         " LESS
 "         au FileType less    setl softtabstop=2
 "         au FileType less    setl shiftwidth=2
-" 
+"
 "         " HTML
 "         au FileType html    setl softtabstop=4
 "         au FileType html    setl shiftwidth=4
@@ -619,20 +619,20 @@ endf
 "         au FileType htmldjango setl shiftwidth=4
 "         au FileType htmldjango setl foldmethod=indent
 "         au FileType htmldjango setl foldnestmax=5
-" 
+"
 "         " XML
 "         au FileType xml     setl softtabstop=4
 "         au FileType xml     setl shiftwidth=4
-" 
+"
 "         " Mercurial
 "         au BufRead,BufNewFile *.mercurial  setl spell
 "         au BufRead,BufNewFile *.hglog  setl syntax=diff
 "         au BufRead,BufNewFile *.hglog  setl foldmethod=expr
 "         au BufRead,BufNewFile *.hglog  setl foldexpr=(getline(v:lnum)=~'^HGLOG:\ '\|\|getline(v:lnum)=~'^diff\ ')?'>1':'1
-" 
+"
 "         " Sage Math
 "         au BufRead,BufNewFile *.sage,*.spyx,*.pyx set ft=python
-" 
+"
 "         augroup Zope
 "           au!
 "           au BufRead,BufNewFile *.zcml   call FT_XML()
@@ -640,45 +640,45 @@ endf
 "           au BufRead,BufNewFile *.tt     setlocal et tw=44 wiw=44
 "           au BufRead,BufNewFile *.txt    call FT_Maybe_ReST()
 "         augroup END
-" 
+"
 "         " SPARQL
 "         au BufRead,BufNewFile *.rq setl ft=sparql
-" 
+"
 "         " JSON
 "         au BufRead,BufNewFile *.json setl ft=javascript
-" 
+"
 "         " ARFF
 "         au BufRead,BufNewFile *.arff setl ft=arff
-" 
+"
 "         " TTL
 "         au BufRead,BufNewFile *.ttl setl ft=n3
-" 
+"
 "         " Mail
 "         au BufRead,BufNewFile alot.* setl ft=mail
 "         au FileType mail setl spell
 "         au FileType mail setl comments=n:>,n:#,nf:-,nf:*
 "         au FileType mail setl formatoptions=tcroqn
 "         au FileType mail setl textwidth=72
-" 
+"
 "         " Jinja
 "         autocmd BufRead,BufNewFile *.jinja setl ft=htmldjango.jinja
-" 
+"
 "         " Markdown
 "         au BufRead,BufNewFile *.md setl ft=markdown
-" 
+"
 "         " json-ld
 "         au BufRead,BufNewFile *.jsonld setl ft=javascript
-" 
+"
 "         " Gradle
 "         au BufRead,BufNewFile *.gradle setl ft=groovy
-" 
+"
 "         " SaltStack
 "         au BufRead,BufNewFile *.sls setl ft=yaml
-" 
+"
 "         " YAML
 "         au FileType yaml    setl softtabstop=2
 "         au FileType yaml    setl shiftwidth=2
-" 
+"
 "         " autocmd BufRead,BufNewFile *.cfg set ft=cisco
 "     endif
 " endif
@@ -698,6 +698,8 @@ filetype plugin on  " filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin("~/.vim/vundle")
 
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 Plugin 'gmarik/Vundle.vim'
 

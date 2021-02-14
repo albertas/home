@@ -1,5 +1,5 @@
 install_vim:
-	apt-get install git git-core vim vim-nox
+	sudo apt-get install git git-core vim vim-nox
 	cp .vimrc ~/
 	cp -r .vim ~/
 	cp .bashrc ~/
