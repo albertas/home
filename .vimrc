@@ -292,7 +292,7 @@ nmap    c/          /\<class
 nmap    m/          /\<def
 
 " Jump to tag in split window
-nmap    g}              :stselect <c-r><c-w><cr>
+" nmap    g}              :stselect <c-r><c-w><cr>
 
 " Scroll half page down
 " nn <c-j> <c-d>
@@ -302,8 +302,8 @@ map <c-j> <c-d>
 map <c-k> <c-u>
 
 " Scroll half screen to left and right vertically
-no <s-h> zH
-no <s-l> zL
+" no <s-h> zH
+" no <s-l> zL
 
 " Autocomplete
 ino <c-k> <c-p>
