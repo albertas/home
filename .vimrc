@@ -334,7 +334,6 @@ cnoremap        <M-BS>          <C-W>
 colors wombat256
 " set guifont=Terminus\ 12
 " set guioptions=irL
-set number
 set wildmenu
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,windows-1257
@@ -376,8 +375,12 @@ set shiftwidth=4
 set autoindent
 set nosmartindent
 
-" Tags
-set tags=./tags,./../tags,./../../tags,tags
+" Use relative line numbers
+set nonu
+set rnu
+
+" Tags " Do not use ctags anymore - I use Jedi instead
+" set tags=./tags,./../tags,./../../tags,tags
 
 " Ignores
 set suffixes+=.pyc,.pyo
