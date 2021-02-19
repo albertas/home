@@ -239,7 +239,7 @@ nmap    <F7>        :call ToggleList("Quickfix List", 'c')<CR>
 nmap    <F8>        :make!<CR>
 nmap    <F11>       :set hlsearch!<CR>
 nmap    <F12>       :setlocal spell!<CR>
-map    <SPACE>     ^
+" map    <SPACE>     ^   " Should better use default mappings
 map     ;i          oimport pdb; pdb.set_trace()<esc>
 map     ;d          O<esc>:.! date "+\%Y-\%m-\%d"<Enter>A[]<esc>hx<Space>P<CR>
 " map     ;f          o<esc>:.! date "+\%Y-\%m-\%d \%H:\%M"<Enter>A[]<Space><esc>hhx<Space>P$a
@@ -251,8 +251,10 @@ map     ;c          oconsole.log();<esc>hi
 map     ;a          :w<CR>:!make<CR>
 " :w<CR>:!snakemake test<CR>
 map     ;s          :w<CR>:!python3 %<CR>
-map     ;y          "+y
-map     ;p          "+p
+map     ;y          "*y
+map     ;p          "*p
+map     ,y          "+y
+map     ,p          "+p
 map     ;da          GVggxi
 " map     ;z          :call LoadNestedList()<CR>
 " map     ;q          :call SaveNestedList()<CR>:q!
@@ -298,10 +300,10 @@ nmap    m/          /\<def
 
 " Scroll half page down
 " nn <c-j> <c-d>
-map <c-j> <c-d>
+" map <c-j> <c-d>
 " Scroll half page up
 " nn <c-k> <c-u>
-map <c-k> <c-u>
+" map <c-k> <c-u>
 
 " Scroll half screen to left and right vertically
 " no <s-h> zH
@@ -709,6 +711,8 @@ Plugin 'junegunn/fzf.vim'
 
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'tpope/vim-unimpaired'
+
 Plugin 'lervag/file-line'
 let g:file_line_crosshairs=0
 
@@ -724,8 +728,14 @@ let g:bufExplorerShowTabBuffer=0
 let g:bufExplorerShowRelativePath=1
 
 "" TODO: These plugins should be investigated.
-" Plugin 'python-mode/python-mode'
+Plugin 'python-mode/python-mode'
 " Plugin 'ycm-core/YouCompleteMe'
+let g:pymode_lint_cwindow = 0
+let g:pymode_lint_on_write = 0
+let g:pymode_rope_complete_on_dot = 0
+let g:pyflakes_use_quickfix = 0
+let g:pymode_lint_cwindow = 0
+nmap <C-c>i :PymodeRopeAutoImport<CR>
 
 
 " Plugin 'Python-mode-klen'
