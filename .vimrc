@@ -223,6 +223,10 @@ endfunction
 
 set makeprg=make\ test  " sirex wouldn't do this
 
+" Allow to insert several empty lines
+nnoremap ;o         o<Esc>0"_D
+nnoremap ;O         O<Esc>0"_D
+
 " Mappings
 let mapleader = ","
 nmap    <F1>        :Gstatus<CR>
