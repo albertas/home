@@ -96,6 +96,7 @@ endfunction
 
 function! CallMakeTestWithCurrentPythonTest()
 python3 << EOF
+# TODO: Should allow to somehow run pytest without arguments
 import re
 import os
 import vim  # https://vimhelp.org/if_pyth.txt.html
@@ -713,13 +714,16 @@ let g:file_line_crosshairs=0
 
 let g:run_py_test_format = "pytest"
 
+" <leader>H and <leader>h - removes some motion keys https://github.com/dusans/vim-hardmode
+Plugin 'wikitopian/hardmode'
+
 Plugin 'bufexplorer.zip'
 "   Do not show buffers from other tabs.
 let g:bufExplorerFindActive=0
 let g:bufExplorerShowTabBuffer=0
 let g:bufExplorerShowRelativePath=1
 
-"" These plugins should be investigated.
+"" TODO: These plugins should be investigated.
 " Plugin 'python-mode/python-mode'
 " Plugin 'ycm-core/YouCompleteMe'
 
@@ -776,8 +780,9 @@ let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize = 30
 let g:NERDTreeIgnore = ['^__pycache__$', '\.egg-info$', '\~$', '\.aux$', '\.idx$', '\.log$', '\.out$', '\.toc$', '\.bbl$', '\.bcf$', '\.blg$', '\.run.xml$']
 
+" I don't use NERDTree so much FZF does the most work.
 " Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
+" autocmd VimEnter * NERDTree | wincmd p
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') |
     \ quit | endif
