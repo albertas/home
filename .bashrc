@@ -125,6 +125,7 @@ alias changes="git dc | colordiff"
 alias ls='ls --hide="*.pyc" --color=auto'
 alias open=xdg-open
 alias m='vim ~/me.rst'
+alias n='vim ~/cct/notes'
 alias d='vim ~/diary.rst'
 alias t='vim ~/todo.rst'
 alias p='ipython'
@@ -135,3 +136,13 @@ alias tox='/home/strazdas/qTox/qtox &'
 alias dice='~/./roll_dice.py'
 alias ..='cd ..'
 alias smake='snakemake'
+
+# FZF set better find file tool (e.g. ripgrep, which respects .gitignore)
+# sudo apt install ripgrep
+if type ag &> /dev/null; then
+    export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
+fi
+#refer rg over ag
+if type rg &> /dev/null; then
+    export FZF_DEFAULT_COMMAND='rg --files --hidden'
+fi
