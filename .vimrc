@@ -243,11 +243,11 @@ map     ;i          oimport pdb; pdb.set_trace()<esc>
 map     ;d          O<esc>:.! date "+\%Y-\%m-\%d"<Enter>A[]<esc>hx<Space>P<CR>
 " map     ;f          o<esc>:.! date "+\%Y-\%m-\%d \%H:\%M"<Enter>A[]<Space><esc>hhx<Space>P$a
 map     ;f          :Files<CR>
+map     ;g          :Rg<CR>
 map     ;j          :call g:Jsbeautify()<CR>
 map     ;c          oconsole.log();<esc>hi
 " map     ;a          :w<CR>:!snakemake<CR>
 map     ;a          :w<CR>:!make<CR>
-map     ;t          :w<CR>:!make test<CR>
 " :w<CR>:!snakemake test<CR>
 map     ;s          :w<CR>:!python3 %<CR>
 map     ;y          "+y
@@ -255,7 +255,8 @@ map     ;p          "+p
 map     ;da          GVggxi
 " map     ;z          :call LoadNestedList()<CR>
 " map     ;q          :call SaveNestedList()<CR>:q!
-map     ;g          :w<CR>:call CallMakeTestWithCurrentPythonTest()<CR>
+map     ;t          :w<CR>:call CallMakeTestWithCurrentPythonTest()<CR>
+" map     ;t          :w<CR>:!make test<CR>
 map     ;q          :call T('')<Left><Left>
 map     \           gc
 map     _           @q
