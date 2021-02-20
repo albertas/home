@@ -681,50 +681,49 @@ endf
 "     endif
 " endif
 
-" Plugins using Dein
-" ==================
-"
-"   https://github.com/Shougo/dein.vim 
-"
-if &compatible
-  set nocompatible
+" Plugins using VIM-Plug
+" ==========================
+" Download VIM-Plug if it was not downaloaded yet
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+call plug#begin('~/.vim/plugged')
 
-" Required - add the dein installation directory into runtimepath
-set runtimepath+=~/.vim/bundle/repos/github.com/Shougo/dein.vim
-if dein#load_state('~/.vim/bundle')
-call dein#begin('~/.vim/bundle')
 
-call dein#add('vim-scripts/wombat256.vim')
 
-call dein#add('~/.vim/bundle/repos/github.com/Shougo/dein.vim')
 
-call dein#add('Shougo/deoplete.nvim')
+Plug 'vim-scripts/wombat256.vim'
 
-call dein#add('junegunn/fzf')
-call dein#add('junegunn/fzf.vim')
+Plug '~/.vim/bundle/repos/github.com/Shougo/dein.vim'
 
-call dein#add('gmarik/Vundle.vim')
+Plug 'Shougo/deoplete.nvim'
 
-call dein#add('tpope/vim-unimpaired')
+Plug 'junegunn/fzf', { 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
-call dein#add('lervag/file-line')
+Plug 'gmarik/Vundle.vim'
+
+Plug 'tpope/vim-unimpaired'
+
+Plug 'lervag/file-line'
 let g:file_line_crosshairs=0
 
 let g:run_py_test_format = "pytest"
 
 " <leader>H and <leader>h - removes some motion keys https://github.com/dusans/vim-hardmode
-call dein#add('wikitopian/hardmode')
+Plug 'wikitopian/hardmode'
 
-call dein#add('vim-scripts/bufexplorer.zip')
+Plug 'vim-scripts/bufexplorer.zip'
 "   Do not show buffers from other tabs.
 let g:bufExplorerFindActive=0
 let g:bufExplorerShowTabBuffer=0
 let g:bufExplorerShowRelativePath=1
 
 "" TODO: These plugins should be investigated.
-call dein#add('python-mode/python-mode')
-" call dein#add('ycm-core/YouCompleteMe')
+" Plug 'python-mode/python-mode'
+" Plug 'ycm-core/YouCompleteMe'
 let g:pymode_lint_cwindow = 0
 let g:pymode_lint_on_write = 0
 let g:pymode_rope_complete_on_dot = 0
@@ -733,7 +732,7 @@ let g:pymode_lint_cwindow = 0
 nmap <C-c>i :PymodeRopeAutoImport<CR>
 
 
-" call dein#add('Python-mode-klen')
+" Plug 'Python-mode-klen'
 " let g:pymode_lint_checkers = ['pyflakes']
 " let g:pymode_lint_cwindow = 0
 " let g:pymode_lint_on_write = 0
@@ -742,7 +741,7 @@ nmap <C-c>i :PymodeRopeAutoImport<CR>
 " let g:pymode_lint_cwindow = 0
 " nmap <C-c>i :PymodeRopeAutoImport<CR>
 
-call dein#add('davidhalter/jedi-vim')
+Plug 'davidhalter/jedi-vim'
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#usages_command = "<leader>n"
@@ -752,9 +751,9 @@ let g:jedi#documentation_command = "K"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#completions_enabled = 0
 
-call dein#add('vim-scripts/surround.vim')
+Plug 'vim-scripts/surround.vim'
 
-call dein#add('vim-scripts/Syntastic')
+Plug 'vim-scripts/Syntastic'
 let g:syntastic_enable_signs = 1
 let g:syntastic_disabled_filetypes = ['html']
 let g:syntastic_quiet_messages={'level':'warnings'}
@@ -766,20 +765,20 @@ let g:syntastic_python_flake8_args = '--ignore=E501,E702,E303'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_python_flake8_args="--max-line-length=99"
 
-call dein#add('vim-scripts/UltiSnips')
-call dein#add('honza/vim-snippets')
-call dein#add('burneyy/vim-snakemake')
+Plug 'vim-scripts/UltiSnips'
+Plug 'honza/vim-snippets'
+Plug 'burneyy/vim-snakemake'
 
 " Former zen coding, now renamed to emmet.
 " Key to expand: <c-y>,
-call dein#add('mattn/emmet-vim')
+Plug 'mattn/emmet-vim'
 let g:user_zen_settings = {
 \  'indentation' : '    '
 \}
 
-call dein#add('vim-scripts/delimitMate.vim')
+Plug 'vim-scripts/delimitMate.vim'
 
-call dein#add('vim-scripts/The-NERD-tree')
+Plug 'vim-scripts/The-NERD-tree'
 let g:NERDTreeQuitOnOpen = 0
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize = 30
@@ -798,52 +797,52 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 
 " Adds syntax highlighting to NERDTree based on filetype
 " TODO need a patched font to use icons in NERD tree
-" call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
-" call dein#add('ryanoasis/vim-devicons')
-" call dein#add('ryanoasis/nerd-fonts')
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/nerd-fonts'
 
-call dein#add('vim-scripts/Tagbar')
+Plug 'vim-scripts/Tagbar'
 let g:tagbar_width = 30
 let g:tagbar_sort = 0
 
-call dein#add('vim-scripts/less-syntax')
+Plug 'vim-scripts/less-syntax'
 
-call dein#add('vim-scripts/VOoM')
+Plug 'vim-scripts/VOoM'
 
-call dein#add('ludovicchabant/vim-lawrencium')
+Plug 'ludovicchabant/vim-lawrencium'
 let g:lawrencium_trace = 0
 
-call dein#add('vim-scripts/vim-coffee-script')
+Plug 'vim-scripts/vim-coffee-script'
 
-call dein#add('vim-scripts/sparql.vim')
+Plug 'vim-scripts/sparql.vim'
 
-call dein#add('mustache/vim-mustache-handlebars')
+Plug 'mustache/vim-mustache-handlebars'
 
-call dein#add('vim-scripts/Jinja')
+Plug 'vim-scripts/Jinja'
 
-call dein#add('vim-scripts/openscad.vim')
+Plug 'vim-scripts/openscad.vim'
 
-call dein#add('vim-scripts/Handlebars')
+Plug 'vim-scripts/Handlebars'
 
-call dein#add('vim-scripts/fugitive.vim')
+Plug 'vim-scripts/fugitive.vim'
 
-call dein#add('vim-scripts/ctrlp.vim')
+Plug 'vim-scripts/ctrlp.vim'
 
-call dein#add('vim-scripts/n3.vim')
+Plug 'vim-scripts/n3.vim'
 
-" call dein#add('benekastah/neomake')
+" Plug 'benekastah/neomake'
 
-call dein#add('editorconfig/editorconfig-vim')
+Plug 'editorconfig/editorconfig-vim'
 
-call dein#add('tomtom/tcomment_vim')
+Plug 'tomtom/tcomment_vim'
 
-call dein#add('octol/vim-cpp-enhanced-highlight')
+Plug 'octol/vim-cpp-enhanced-highlight'
 
-call dein#add('vim-scripts/Cpp11-Syntax-Support')
-" call dein#add('vim-scripts/Cpp11-Syntax-Support')
+Plug 'vim-scripts/Cpp11-Syntax-Support'
+" Plug 'vim-scripts/Cpp11-Syntax-Support'
 
 " let g:tex_no_error=1
-" call dein#add('lervag/vimtex')
+" Plug 'lervag/vimtex'
 " let g:Tex_IgnoredWarnings = "Underfull\n".
 " \"Overfull\n".
 " \"specifier changed to\n".
@@ -856,29 +855,7 @@ call dein#add('vim-scripts/Cpp11-Syntax-Support')
 
 
 
-
-
-" All of your dein Plugins must be added before the following line
-" Required
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-" Required
-filetype plugin indent on
-syntax enable
-
-" If you want to install not installed plugins on startup.
-" if dein#check_install()
-"     call dein#install()
-" endif
-
-
+call plug#end()
 
 
 

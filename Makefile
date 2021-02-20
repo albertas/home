@@ -1,7 +1,8 @@
 .ONESHELL:
 SHELL := /bin/bash
 
-install_vim:
+install_nvim_with_vim_plug:
+	# Bash conditions: https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html
 	if ! command -v vim &> /dev/null
 	then
 		sudo apt-get install git git-core vim vim-nox || true
@@ -12,15 +13,6 @@ install_vim:
 	cp -r .vim ~/.config/nvim
 	cp .bashrc ~/
 	cp .gitconfig ~/
-	# git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim || true
-	# Bash conditions: https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html
-	if [ ! -d /home/niekas/.vim/bundle/repos/github.com/Shougo/dein.vim ]
-	then
-		curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-		sh ./installer.sh ~/.vim/bundle
-		rm installer.sh || true
-	fi
-	nvim +dein#install +qall
-
-
+	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+	vim +PlugInstall +qall
 
