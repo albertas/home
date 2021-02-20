@@ -121,6 +121,9 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 export PATH=$PATH:/opt/Espressif/crosstool-NG/builds/xtensa-lx106-elf/bin
 export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
 
+alias vi='nvim'
+alias vim='nvim'
+
 alias changes="git dc | colordiff"
 alias ls='ls --hide="*.pyc" --color=auto'
 alias open=xdg-open
@@ -136,6 +139,8 @@ alias tox='/home/strazdas/qTox/qtox &'
 alias dice='~/./roll_dice.py'
 alias ..='cd ..'
 alias smake='snakemake'
+
+
 
 # FZF set better find file tool (e.g. ripgrep, which respects .gitignore)
 # sudo apt install ripgrep

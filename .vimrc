@@ -339,23 +339,6 @@ cnoremap        <Esc>f          <S-Right>
 " Alt-Backspace deletes word backwards
 cnoremap        <M-BS>          <C-W>
 
-" Look and feel.
-" colorscheme desert
-" set background=dark
-colors wombat256
-" set guifont=Terminus\ 12
-" set guioptions=irL
-set wildmenu
-set encoding=utf-8
-set fileencodings=ucs-bom,utf-8,windows-1257
-" set foldmethod=syntax  " marker   - evil command - lags vim as hell
-" set foldlevel=20
-set foldmethod=indent
-set foldlevel=20
-set foldclose=all " zo zc zm zr zR
-set showcmd     " Show count of selected lines or characters
-set shell=/bin/sh
-
 " Text wrapping
 set textwidth=99
 set linebreak
@@ -386,8 +369,8 @@ set shiftwidth=4
 set autoindent
 set nosmartindent
 
-" Use relative line numbers
-set nonu
+" Use relative line numbers and line number
+set nu
 set rnu
 
 " Tags " Do not use ctags anymore - I use Jedi instead
@@ -712,7 +695,7 @@ set runtimepath+=~/.vim/bundle/repos/github.com/Shougo/dein.vim
 if dein#load_state('~/.vim/bundle')
 call dein#begin('~/.vim/bundle')
 
-
+call dein#add('vim-scripts/wombat256.vim')
 
 call dein#add('~/.vim/bundle/repos/github.com/Shougo/dein.vim')
 
@@ -932,6 +915,27 @@ syntax enable
 "   clast!
 " endfunction
 " map <leader>, :call QuickFixBookmark()<CR>
+
+
+
+" Look and feel.
+" colorscheme desert
+" set background=dark
+colors wombat256
+" set guifont=Terminus\ 12
+" set guioptions=irL
+set wildmenu
+set encoding=utf-8
+set fileencodings=ucs-bom,utf-8,windows-1257
+" set foldmethod=syntax  " marker   - evil command - lags vim as hell
+" set foldlevel=20
+set foldmethod=indent
+set foldlevel=20
+set foldclose=all " zo zc zm zr zR
+set showcmd     " Show count of selected lines or characters
+set shell=/bin/sh
+
+
 
 
 " visual incrementing
