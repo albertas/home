@@ -13,6 +13,6 @@ install_nvim_with_vim_plug:
 	cp -r .vim ~/.config/nvim
 	cp .bashrc ~/
 	cp .gitconfig ~/
-	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+	sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 	vim +PlugInstall +qall
 
