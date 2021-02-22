@@ -248,10 +248,10 @@ nmap    <F11>       :set hlsearch!<CR>
 nmap    <F12>       :setlocal spell!<CR>
 " map    <SPACE>     ^   " Should better use default mappings
 map     ;i          oimport pdb; pdb.set_trace()<esc>
-map     ;d          O<esc>:.! date "+\%Y-\%m-\%d"<Enter>A[]<esc>hx<Space>P<CR>
-" map     ;f          o<esc>:.! date "+\%Y-\%m-\%d \%H:\%M"<Enter>A[]<Space><esc>hhx<Space>P$a
-map     ;f          :Files<CR>
-map     ;g          :Rg<CR>
+map     ;d          O<esc>:.! date "+\%Y-\%m-\%d"<Enter>A[]<esc>hx^P<CR>
+" map     ;f          o<esc>:.! date "+\%Y-\%m-\%d \%H:\%M"<Enter>A[]^<esc>hhx^P$a
+map     <leader>f          :Files<CR>
+map     <leader>g          :Rg<CR>
 map     ;j          :call g:Jsbeautify()<CR>
 map     ;c          oconsole.log();<esc>hi
 " map     ;a          :w<CR>:!snakemake<CR>
