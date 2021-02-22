@@ -131,8 +131,10 @@ if os.path.basename(test_filename).startswith('test_'):
     print('\nRUN:', test_path, '\n')
     vim.command('let $TEST_ME_PLEASE="{test_path}"'.format(test_path=test_path))
     cmd = '!TEST_ME_PLEASE="{test_path}" make test'.format(test_path=test_path)
+    # vim.command('te')  # TODO: investigate how to run interactive terminal using NeoVim
     vim.command(cmd)
 else:
+    # vim.command('te')
     vim.command('!make test')
 
 EOF
@@ -743,7 +745,7 @@ nmap <C-c>i :PymodeRopeAutoImport<CR>
 
 Plug 'davidhalter/jedi-vim'
 let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_assignments_command = "<leader>a"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#goto_definitions_command = ""

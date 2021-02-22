@@ -7,6 +7,9 @@ install_nvim_with_vim_plug:
 	mkdir -p ~/.config/nvim
 	cp .vimrc ~/.config/nvim/init.vim
 	cp -r .vim/* ~/.config/nvim
+	mkdir -p ~/.vim
+	cp .vimrc ~/.vimrc
+	cp -r .vim/* ~/.vim
 	cp .bashrc ~/
 	cp .gitconfig ~/
 	sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
