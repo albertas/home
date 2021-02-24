@@ -9,6 +9,8 @@
 
 set nocompatible
 
+autocmd TermOpen * startinsert  " Automatically enter insert mode in NeoVim terminal mode
+
 
 function! T(...)  " Default values support Vim 8.1.1310 https://github.com/vim/vim/commit/42ae78cfff171fbd7412306083fe200245d7a7a6
     let startline = line("'<")
@@ -130,12 +132,10 @@ if os.path.basename(test_filename).startswith('test_'):
 
     print('\nRUN:', test_path, '\n')
     vim.command('let $TEST_ME_PLEASE="{test_path}"'.format(test_path=test_path))
-    cmd = '!TEST_ME_PLEASE="{test_path}" make test'.format(test_path=test_path)
-    # vim.command('te')  # TODO: investigate how to run interactive terminal using NeoVim
+    cmd = 'te TEST_ME_PLEASE="{test_path}" make test'.format(test_path=test_path)
     vim.command(cmd)
 else:
-    # vim.command('te')
-    vim.command('!make test')
+    vim.command('te make test')
 
 EOF
 endfunction
@@ -257,9 +257,9 @@ map     <leader>g          :Rg<CR>
 map     ;j          :call g:Jsbeautify()<CR>
 map     ;c          oconsole.log();<esc>hi
 " map     ;a          :w<CR>:!snakemake<CR>
-map     ;a          :w<CR>:!make<CR>
+map     ;a          :w<CR>:te make<CR>
 " :w<CR>:!snakemake test<CR>
-map     ;s          :w<CR>:!python3 %<CR>
+map     ;s          :w<CR>:te python3 %<CR>
 map     ;y          "*y
 map     ;p          "*p
 map     ,y          "+y
