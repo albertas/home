@@ -705,8 +705,24 @@ call plug#begin('~/.vim/plugged')
 "
 Plug 'dense-analysis/ale'
 let g:ale_lint_on_text_changed=1
-let g:ale_fixers = {'python': ['black']}
-let g:ale_linters = {'python': ['flake8']}
+let g:ale_fixers = {'python': ['black', 'isort']}
+let g:ale_linters = {'python': ['flake8', 'mypy']}
+let g:ale_sign_column_always = 1
+" Jump to next error
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+highlight link SyntasticError WildMenu
+highlight link SyntasticWarning WildMenu
+highlight link ALEErrorSign WildMenu
+highlight link ALEWarningSign WildMenu
+highlight link ALEError WildMenu
+highlight link ALEWarning WildMenu
+highlight link ALEInfo WildMenu
+highlight link ALEStyleError WildMenu
+highlight link ALEStyleWarning WildMenu
+
+
 " Alternatives to 'dense-analysis/ale'
 " -------------------
 " Plug 'benekastah/neomake'
@@ -723,7 +739,7 @@ let g:ale_linters = {'python': ['flake8']}
 " let g:syntastic_python_flake8_args="--max-line-length=99"
 
 
-Plug 'vim-scripts/wombat256.vim'  " TODO: Test if this works
+Plug 'vim-scripts/wombat256.vim'  " TODO: Test if this works (no need to copy .vim if it does)
 
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
