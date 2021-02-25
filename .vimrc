@@ -686,6 +686,9 @@ endf
 
 " Plugins using VIM-Plug
 " ==========================
+"
+" :PlugInstall  " Installs new plugins
+"
 " Download VIM-Plug if it was not downaloaded yet
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -694,27 +697,57 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/plugged')
 
-
-
+" =====================
+"   Top class plugins
+" =====================
+" F8 to format Python file using Black
+" RealTime code Linting
+"
 Plug 'dense-analysis/ale'
 let g:ale_lint_on_text_changed=1
-let g:ale_fixers = {'python': ['black', 'flake8']}
+let g:ale_fixers = {'python': ['black']}
+let g:ale_linters = {'python': ['flake8']}
+" Alternatives to 'dense-analysis/ale'
+" -------------------
+" Plug 'benekastah/neomake'
+" Plug 'vim-scripts/Syntastic'
+" let g:syntastic_enable_signs = 1
+" let g:syntastic_disabled_filetypes = ['html']
+" let g:syntastic_quiet_messages={'level':'warnings'}
+" let g:syntastic_python_python_exec = '/usr/bin/python3'
+" let g:syntastic_python_checkers = ['python', 'flakehell']
+" let g:syntastic_filetype_map = {'python.django': 'python'}
+" let g:syntastic_python_pep8_args = '--ignore=E501'
+" let g:syntastic_python_flake8_args = '--ignore=E501,E702,E303'
+" let g:syntastic_cpp_compiler_options = ' -std=c++11'
+" let g:syntastic_python_flake8_args="--max-line-length=99"
+
 
 Plug 'vim-scripts/wombat256.vim'  " TODO: Test if this works
-
-Plug '~/.vim/bundle/repos/github.com/Shougo/dein.vim'
-
-Plug 'Shougo/deoplete.nvim'
 
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'gmarik/Vundle.vim'
-
-Plug 'tpope/vim-unimpaired'
+Plug 'davidhalter/jedi-vim'
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>a"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#rename_command = "<leader>r"
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = "K"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#completions_enabled = 0
 
 Plug 'lervag/file-line'
 let g:file_line_crosshairs=0
+
+Plug 'tomtom/tcomment_vim'
+
+" =============
+" Other plugins
+" =============
+
+Plug 'tpope/vim-unimpaired'
 
 let g:run_py_test_format = "pytest"
 
@@ -747,29 +780,7 @@ nmap <C-c>i :PymodeRopeAutoImport<CR>
 " let g:pymode_lint_cwindow = 0
 " nmap <C-c>i :PymodeRopeAutoImport<CR>
 
-Plug 'davidhalter/jedi-vim'
-let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>a"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#rename_command = "<leader>r"
-let g:jedi#goto_definitions_command = ""
-let g:jedi#documentation_command = "K"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#completions_enabled = 0
-
 Plug 'vim-scripts/surround.vim'
-
-Plug 'vim-scripts/Syntastic'
-let g:syntastic_enable_signs = 1
-let g:syntastic_disabled_filetypes = ['html']
-let g:syntastic_quiet_messages={'level':'warnings'}
-let g:syntastic_python_python_exec = '/usr/bin/python3'
-let g:syntastic_python_checkers = ['python', 'flake8']
-let g:syntastic_filetype_map = {'python.django': 'python'}
-let g:syntastic_python_pep8_args = '--ignore=E501'
-let g:syntastic_python_flake8_args = '--ignore=E501,E702,E303'
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
-let g:syntastic_python_flake8_args="--max-line-length=99"
 
 Plug 'vim-scripts/UltiSnips'
 Plug 'honza/vim-snippets'
@@ -836,11 +847,7 @@ Plug 'vim-scripts/ctrlp.vim'
 
 Plug 'vim-scripts/n3.vim'
 
-" Plug 'benekastah/neomake'
-
 Plug 'editorconfig/editorconfig-vim'
-
-Plug 'tomtom/tcomment_vim'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 
