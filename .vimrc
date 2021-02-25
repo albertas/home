@@ -275,25 +275,51 @@ map     \           gc
 map     _           @q
 imap    <F10>       <nop>
 
-map     ą           1
-map     č           2
-map     ę           3
-map     ė           4
-map     į           5
-map     š           6
-map     ų           7
-map     ū           8
-map     „           9
-map     “           0
-map     Ą           !
-map     Č           @
-map     Ę           #
-map     Ė           $
-map     Į           %
-map     Š           ^
-map     Ų           &
-map     Ū           *
 
+" TODO: Read more about this command :help 'langmap'
+" set langmap=ą1,č2,ę3,ė4,į5,š6,ų7,ū8,„9,“0,Ą!,Č@,Ę#,Ė$,Į%,Š^,Ų&,Ū*,ž=
+map    ą           1
+map    č           2
+map    ę           3
+map    ė           4
+map    į           5
+map    š           6
+map    ų           7
+map    ū           8
+map    „           9
+map    “           0
+map    ž           =
+map    Ą           !
+map    Č           @
+map    Ę           #
+map    Ė           $
+map    Į           %
+map    Š           ^
+map    Ų           &
+map    Ū           *
+map    Ž           +
+
+" TODO: Read more amout mapping modes at :help map-modes
+cmap    ą           1
+cmap    č           2
+cmap    ę           3
+cmap    ė           4
+cmap    į           5
+cmap    š           6
+cmap    ų           7
+cmap    ū           8
+cmap    „           9
+cmap    “           0
+cmap    ž           =
+cmap    Ą           !
+cmap    Č           @
+cmap    Ę           #
+cmap    Ė           $
+cmap    Į           %
+cmap    Š           ^
+cmap    Ų           &
+cmap    Ū           *
+cmap    Ž           +
 
 " set     timeoutlen=300    " Remove delay after delete dd command
 
