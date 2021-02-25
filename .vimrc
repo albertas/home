@@ -275,6 +275,26 @@ map     \           gc
 map     _           @q
 imap    <F10>       <nop>
 
+map     ą           1
+map     č           2
+map     ę           3
+map     ė           4
+map     į           5
+map     š           6
+map     ų           7
+map     ū           8
+map     „           9
+map     “           0
+map     Ą           !
+map     Č           @
+map     Ę           #
+map     Ė           $
+map     Į           %
+map     Š           ^
+map     Ų           &
+map     Ū           *
+
+
 " set     timeoutlen=300    " Remove delay after delete dd command
 
 " Jump between windows and tabs.
