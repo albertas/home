@@ -759,6 +759,9 @@ let g:file_line_crosshairs=0
 
 Plug 'tomtom/tcomment_vim'
 
+" TODO: Should use VIM tabs instead of terminal tabs: to synchronize files.
+" TODO: Use git plugin to git grep, git status, branch switching.
+
 " =============
 " Other plugins
 " =============
