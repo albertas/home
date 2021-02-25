@@ -751,7 +751,7 @@ call plug#begin('~/.vim/plugged')
 "
 Plug 'dense-analysis/ale'
 let g:ale_lint_on_text_changed=1
-let g:ale_fixers = {'python': ['black', 'isort']}
+let g:ale_fixers = {'python': ['isort', 'black']}
 let g:ale_linters = {'python': ['flake8', 'mypy']}
 let g:ale_sign_column_always = 1
 " Jump to next error
