@@ -322,6 +322,7 @@ cmap    Ū           *
 cmap    Ž           +
 
 " set     timeoutlen=300    " Remove delay after delete dd command
+set cc=""  " Do not show line end symbol
 
 " Jump between windows and tabs.
 " nmap    <TAB>       <C-W>p   " These two commands break <C-i> command
