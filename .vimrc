@@ -245,7 +245,8 @@ nmap    <C-F5>      :cc<CR>
 map     <F6>        <C-^>
 " vmap    <F6>        <ESC>:exec "'<,'>w !vpaste ".&ft<CR>
 nmap    <F7>        :call ToggleList("Quickfix List", 'c')<CR>
-nmap    <F8>        :make!<CR>
+" nmap    <F8>        :make!<CR>
+nmap    <F8>        <Plug>(ale_fix)
 nmap    <F11>       :set hlsearch!<CR>
 nmap    <F12>       :setlocal spell!<CR>
 " map    <SPACE>     ^   " Should better use default mappings
@@ -695,8 +696,11 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'dense-analysis/ale'
+let g:ale_lint_on_text_changed=1
+let g:ale_fixers = {'python': ['black', 'flake8']}
 
-Plug 'vim-scripts/wombat256.vim'
+Plug 'vim-scripts/wombat256.vim'  " TODO: Test if this works
 
 Plug '~/.vim/bundle/repos/github.com/Shougo/dein.vim'
 
