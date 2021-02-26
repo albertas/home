@@ -1,8 +1,13 @@
 [flake8]
 max-line-length = 120
 ignore =
+    DJ05,
+    DJ09,
     I100,
-    I201
+    I101,                                                                                                                                               
+    I201,
+    W503
 per-file-ignores =
     # imported but unused
     __init__.py: F401
+
