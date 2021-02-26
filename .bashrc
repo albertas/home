@@ -121,6 +121,7 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 export PATH=$PATH:/opt/Espressif/crosstool-NG/builds/xtensa-lx106-elf/bin
 export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
 
+alias iv='nvim'
 alias vi='nvim'
 alias vim='nvim'
 

@@ -300,26 +300,26 @@ map    Ū           *
 map    Ž           +
 
 " TODO: Read more amout mapping modes at :help map-modes
-cmap    ą           1
-cmap    č           2
-cmap    ę           3
-cmap    ė           4
-cmap    į           5
-cmap    š           6
-cmap    ų           7
-cmap    ū           8
-cmap    „           9
-cmap    “           0
-cmap    ž           =
-cmap    Ą           !
-cmap    Č           @
-cmap    Ę           #
-cmap    Ė           $
-cmap    Į           %
-cmap    Š           ^
-cmap    Ų           &
-cmap    Ū           *
-cmap    Ž           +
+" cmap    ą           1
+" cmap    č           2
+" cmap    ę           3
+" cmap    ė           4
+" cmap    į           5
+" cmap    š           6
+" cmap    ų           7
+" cmap    ū           8
+" cmap    „           9
+" cmap    “           0
+" cmap    ž           =
+" cmap    Ą           !
+" cmap    Č           @
+" cmap    Ę           #
+" cmap    Ė           $
+" cmap    Į           %
+" cmap    Š           ^
+" cmap    Ų           &
+" cmap    Ū           *
+" cmap    Ž           +
 
 " set     timeoutlen=300    " Remove delay after delete dd command
 set cc=""  " Do not show line end symbol
@@ -808,6 +808,8 @@ Plug 'tomtom/tcomment_vim'
 
 " TODO: Should use VIM tabs instead of terminal tabs: to synchronize files.
 " TODO: Use git plugin to git grep, git status, branch switching.
+
+Plug 'vim-airline/vim-airline'
 
 " =============
 " Other plugins
