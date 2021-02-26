@@ -261,10 +261,10 @@ map     ;c          oconsole.log();<esc>hi
 map     ;a          :w<CR>:te make<CR>
 " :w<CR>:!snakemake test<CR>
 map     ;s          :w<CR>:te python3 %<CR>
-map     ;y          "*y
-map     ;p          "*p
-map     ,y          "+y
-map     ,p          "+p
+map     ;y          "+y
+map     ;p          "+p
+map     ,y          "*y
+map     ,p          "*p
 map     ;da          GVggxi
 " map     ;z          :call LoadNestedList()<CR>
 " map     ;q          :call SaveNestedList()<CR>:q!
