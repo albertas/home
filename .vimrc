@@ -810,6 +810,8 @@ Plug 'tomtom/tcomment_vim'
 " TODO: Use git plugin to git grep, git status, branch switching.
 
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline_theme='wombat'
 
 " =============
 " Other plugins
