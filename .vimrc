@@ -102,6 +102,7 @@ python3 << EOF
 import re
 import os
 import vim  # https://vimhelp.org/if_pyth.txt.html
+import pynvim
 
 cursor = vim.current.window.cursor
 test_filename = vim.eval("expand('%p')")
@@ -134,8 +135,10 @@ if os.path.basename(test_filename).startswith('test_'):
     vim.command('let $TEST_ME_PLEASE="{test_path}"'.format(test_path=test_path))
     cmd = 'te TEST_ME_PLEASE="{test_path}" make test'.format(test_path=test_path)
     vim.command(cmd)
+    vim.command('redraw!')
 else:
     vim.command('te make test')
+    vim.command('redraw!')
 
 EOF
 endfunction
