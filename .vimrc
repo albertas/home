@@ -1059,3 +1059,9 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 
 autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+
+
+" Highlight breakpoint() 
+" highlight PyBreakpoint ctermfg=LightBlue guifg=LightBlue
+highlight link PyBreakpoint Keyword
+call matchadd("PyBreakpoint", '\<breakpoint\(\)\>')
