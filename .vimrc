@@ -326,8 +326,6 @@ map    Ž           +
 " cmap    Ū           *
 " cmap    Ž           +
 
-" set     timeoutlen=300    " Remove delay after delete dd command
-set cc=""  " Do not show line end symbol
 
 " Jump between windows and tabs.
 " nmap    <TAB>       <C-W>p   " These two commands break <C-i> command
@@ -1068,3 +1066,7 @@ autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <
 " highlight PyBreakpoint ctermfg=LightBlue guifg=LightBlue
 highlight link PyBreakpoint Keyword
 call matchadd("PyBreakpoint", '\<breakpoint\(\)\>')
+
+" set     timeoutlen=300    " Remove delay after delete dd command
+" TODO: this setting is not respsected (not applied on startup)
+set cc=""  " Do not show line end symbol
