@@ -106,7 +106,7 @@ import pynvim
 
 cursor = vim.current.window.cursor
 test_filename = vim.eval("expand('%p')")
-if os.path.basename(test_filename).startswith('test_'):
+if os.path.basename(test_filename).startswith('test'):
     test_name = None
     class_name = None
     for line_no in range(cursor[0]-1, -1, -1):
