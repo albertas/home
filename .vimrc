@@ -253,7 +253,9 @@ nmap    <F8>        <Plug>(ale_fix)
 nmap    <F11>       :set hlsearch!<CR>
 nmap    <F12>       :setlocal spell!<CR>
 " map    <SPACE>     ^   " Should better use default mappings
-map     ;i          oimport pdb; pdb.set_trace()<esc>
+"
+" TODO: identation should be correct when line before is empty
+map     ;i          obreakpoint()<esc> 
 map     ;d          O<esc>:.! date "+\%Y-\%m-\%d"<Enter>A[]<esc>hx^P<CR>
 " map     ;f          o<esc>:.! date "+\%Y-\%m-\%d \%H:\%M"<Enter>A[]^<esc>hhx^P$a
 map     <leader>f          :Files<CR>
