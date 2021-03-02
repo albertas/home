@@ -164,6 +164,33 @@ endfunction
 " EOF
 " endfunction
 
+function! InsertBreakpoint()
+python3 << EOF
+import re
+import vim  # https://vimhelp.org/if_pyth.txt.html
+
+cursor = vim.current.window.cursor
+
+add_spaces = False
+for i in range(20):
+    line = vim.current.buffer[cursor[0] -1 - i]
+    if line.strip():
+        if ':' in line:
+            add_spaces = True
+        break
+    line = vim.current.buffer[cursor[0] -1 + i]
+    if line.strip():
+        break
+
+whitespace = re.findall('^(\s*)\S', line)
+whitespace = whitespace[0] if whitespace else ''
+if add_spaces:
+    whitespace += '    '
+vim.current.buffer.append(f'{whitespace}breakpoint()', cursor[0])
+
+EOF
+endfunction
+
 
 function! ToggleNERDTreeAndTagbar()
     " Detect which plugins are open
@@ -255,7 +282,7 @@ nmap    <F12>       :setlocal spell!<CR>
 " map    <SPACE>     ^   " Should better use default mappings
 "
 " TODO: identation should be correct when line before is empty
-map     ;i          obreakpoint()<esc> 
+map     ;i          :call InsertBreakpoint()<CR>
 map     ;d          O<esc>:.! date "+\%Y-\%m-\%d"<Enter>A[]<esc>hx^P<CR>
 " map     ;f          o<esc>:.! date "+\%Y-\%m-\%d \%H:\%M"<Enter>A[]^<esc>hhx^P$a
 map     <leader>f          :Files<CR>
