@@ -879,9 +879,9 @@ let g:NERDTreeIgnore = ['^__pycache__$', '\.egg-info$', '\~$', '\.aux$', '\.idx$
 " Start NERDTree and put the cursor back in the other window.
 " autocmd VimEnter * NERDTree | wincmd p
 " Exit Vim if NERDTree is the only window left.
-"
-" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') |
-"     \ quit | endif
+
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') |
+    \ quit | endif
 
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
