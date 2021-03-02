@@ -273,7 +273,7 @@ map     ,p          "*p
 map     ;da          GVggxi
 " map     ;z          :call LoadNestedList()<CR>
 " map     ;q          :call SaveNestedList()<CR>:q!
-map     ;t          :w<CR>:call CallMakeTestWithCurrentPythonTest()<CR>
+map     ;t          :w<CR>:NERDTreeClose<CR>:call CallMakeTestWithCurrentPythonTest()<CR>
 " map     ;t          :w<CR>:!make test<CR>
 map     ;q          :call T('')<Left><Left>
 map     \           gc
