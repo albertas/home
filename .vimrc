@@ -1092,7 +1092,7 @@ autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <
 " Highlight breakpoint() 
 " highlight PyBreakpoint ctermfg=LightBlue guifg=LightBlue
 highlight link PyBreakpoint Keyword
-call matchadd("PyBreakpoint", '\sbreakpoint()\s')
+call matchadd("PyBreakpoint", 'breakpoint()')
 
 " set     timeoutlen=300    " Remove delay after delete dd command
 " TODO: this setting is not respsected (not applied on startup)

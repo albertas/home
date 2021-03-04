@@ -14,6 +14,7 @@
     re = reset
     glog = log --graph
     mt = mergetool -y --tool=kdiff3 # git rebase --continue   # to merge conflicts
+    sf = show --name-only
     # git ci -am "<message>"  # commits modified files
     # $ gitg  # GUI for change review
     # $ tig   # shell tool for change review
