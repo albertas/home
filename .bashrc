@@ -140,7 +140,7 @@ alias tox='/home/strazdas/qTox/qtox &'
 alias dice='~/./roll_dice.py'
 alias ..='cd ..'
 alias smake='snakemake'
-alias git-rm-merged='git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d'
+alias git-rm-merged='git ch master && git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d'
 
 
 # FZF set better find file tool (e.g. ripgrep, which respects .gitignore)

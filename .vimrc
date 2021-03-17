@@ -79,6 +79,21 @@ EOF
 endfunction
 
 
+function! CreateJIRABranchFromRegister()
+    " Copy JIRA Issue description and run this script to pull the branch
+python3 << EOF
+import vim
+
+register = vim.eval('@*')
+branch_name = 'ft/' + '-'.join(register.lower().split())
+
+vim.command(f"te git ch master && git pull && git ch -b {branch_name}")
+vim.command('redraw!')
+
+EOF
+endfunction
+
+
 function! TestVS() range
     " This is an example how to get selection range in vimscript-Python
     let startline = line("'<")
@@ -269,7 +284,7 @@ nmap    <F2>        :update<CR>
 imap    <F2>        <ESC>:update<CR>a
 nmap    <F3>        :BufExplorer<CR>
 " nmap    <F4>        :call ToggleNERDTreeAndTagbar()<CR>
-nmap    <F4>        :call NERDTreeToggle()<CR>
+nmap    <F4>        :NERDTreeToggle<CR>
 nmap    <F5>        :cnext<CR>
 nmap    <S-F5>      :cprevious<CR>
 nmap    <C-F5>      :cc<CR>
@@ -284,6 +299,7 @@ nmap    <F12>       :setlocal spell!<CR>
 "
 " TODO: identation should be correct when line before is empty
 map     ;i          :call InsertBreakpoint()<CR>
+map     ;b          :call CreateJIRABranchFromRegister()<CR>
 map     ;d          O<esc>:.! date "+\%Y-\%m-\%d"<Enter>A[]<esc>hx^P<CR>
 " map     ;f          o<esc>:.! date "+\%Y-\%m-\%d \%H:\%M"<Enter>A[]^<esc>hhx^P$a
 map     <leader>f          :Files<CR>
