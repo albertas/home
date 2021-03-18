@@ -20,6 +20,9 @@
     # $ tig   # shell tool for change review
     # git merge --no-ff   # Merges without removing merge history
     # git clean -dfx      # Removes all uncommited files
+    #
+    # Grep excluding tests
+    # 	git grep term_to_search ':!*test*'
 [core]
     editor = nvim
     autocrlf = input

@@ -206,6 +206,18 @@ vim.current.buffer.append(f'{whitespace}breakpoint()', cursor[0])
 EOF
 endfunction
 
+function! CloseNERDTreeIfItsOpen()
+    if exists('t:NERDTreeBufName')
+        let nerdtree_open = bufwinnr(t:NERDTreeBufName) != -1
+    else
+        let nerdtree_open = 0
+    endif
+
+    " Perform the appropriate action
+    if nerdtree_open
+        NERDTreeToggle
+    endif
+endfunction
 
 function! ToggleNERDTreeAndTagbar()
     " Detect which plugins are open
@@ -288,7 +300,8 @@ nmap    <F4>        :NERDTreeToggle<CR>
 nmap    <F5>        :cnext<CR>
 nmap    <S-F5>      :cprevious<CR>
 nmap    <C-F5>      :cc<CR>
-map     <F6>        <C-^>
+" map     <F6>        <C-^>
+map     <F6>        :BufExplorer<CR>j<CR>
 " vmap    <F6>        <ESC>:exec "'<,'>w !vpaste ".&ft<CR>
 nmap    <F7>        :call ToggleList("Quickfix List", 'c')<CR>
 " nmap    <F8>        :make!<CR>
@@ -318,7 +331,7 @@ map     ;da          GVggxi
 " map     ;z          :call LoadNestedList()<CR>
 " map     ;q          :call SaveNestedList()<CR>:q!
 " map     ;t          :w<CR>:NERDTreeClose<CR>:call CallMakeTestWithCurrentPythonTest()<CR>
-map     ;t          :w<CR>:call CallMakeTestWithCurrentPythonTest()<CR>
+map     ;t          :w<CR>:call CloseNERDTreeIfItsOpen()<CR>:call CallMakeTestWithCurrentPythonTest()<CR>
 " map     ;t          :w<CR>:!make test<CR>
 map     ;q          :call T('')<Left><Left>
 map     \           gc
