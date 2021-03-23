@@ -11,6 +11,7 @@
     di = diff
     ci = commit
     ch = checkout
+    cb = checkout -b
     re = reset
     glog = log --graph
     mt = mergetool -y --tool=kdiff3 # git rebase --continue   # to merge conflicts

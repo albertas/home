@@ -86,8 +86,14 @@ import vim
 
 register = vim.eval('@*')
 branch_name = 'ft/' + '-'.join(register.lower().split())
+for char in """.(),[]"'""":
+    branch_name = branch_name.replace(char, '')
 
-vim.command(f"te git ch master && git pull && git ch -b {branch_name}")
+cmd = f"te git ch master && git pull && git ch -b {branch_name}"
+print('Running this command:')
+print('cmd')
+
+vim.command(cmd)
 vim.command('redraw!')
 
 EOF
