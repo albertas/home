@@ -86,7 +86,7 @@ import vim
 
 register = vim.eval('@*')
 branch_name = 'ft/' + '-'.join(register.lower().split())
-for char in """.(),[]"'""":
+for char in """.(),[]"'/:\\!@#$%^&*_+=|;?~`""":
     branch_name = branch_name.replace(char, '')
 
 cmd = f"te git ch master && git pull && git ch -b {branch_name}"
