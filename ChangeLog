@@ -1,0 +1,36 @@
+### Ubuntu 20.04 setup instructions
+Firefox DDG
+Tweeks remove icons from dekstop and animations
+sudo apt-get install vim vim-nox vim-gtk3 git  # Should better clone github.com/albertas/home instead of these commands
+
+Xfce-Terminal - install, because it supports git grep selection
+Select dark theme Tweaks appereance
+vim ~/.config/xfce4/terminal/accels.scm
+(gtk_accel_path "<Actions>/terminal-window/contents" "")
+(gtk_accel_path "<Actions>/terminal-window/next-tab" "<Primary><Shift>j")
+(gtk_accel_path "<Actions>/terminal-window/prev-tab" "<Primary><Shift>k")
+(gtk_accel_path "<Actions>/terminal-window/next-tab" "<Alt>l")
+(gtk_accel_path "<Actions>/terminal-window/new-tab" "<Alt>j")
+(gtk_accel_path "<Actions>/terminal-window/prev-tab" "<Alt>h")
+
+
+install docker
+install docker-compose
+add your user to docker group to run without sudo: https://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo
+
+
+$ sudo apt install dconf-editor   # Dont show mounts in dock
+/org/gnome/shell/extensions/dash-to-dock show-mounts OFF
+
+$ sudo apt install ripgrep   # For better search in files in VIM
+
+$ sudo apt install gnome-shell-extension-system-monitor  # For system monitoring in status bar
+Enable in Extensions application
+
+$ sudo apt install htop	   # For system monitoring inside terminal
+
+$ sudo apt install xcape   # For mapping Caps_Lock to ESC
+cat > ~/.xmodmap 
+remove Lock = Caps_Lock
+keysym Caps_Lock = Escape
+$ xmodmap ~/.xmodmap

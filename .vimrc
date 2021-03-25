@@ -85,9 +85,12 @@ python3 << EOF
 import vim
 
 register = vim.eval('@*')
-branch_name = 'ft/' + '-'.join(register.lower().split())
+branch_name = '-'.join(register.lower().split())
+for char in """.:""":
+    branch_name = branch_name.replace(char, '-')
 for char in """.(),[]"'/:\\!@#$%^&*_+=|;?~`""":
     branch_name = branch_name.replace(char, '')
+branch_name = 'ft/' + branch_name
 
 cmd = f"te git ch master && git pull && git ch -b {branch_name}"
 print('Running this command:')
