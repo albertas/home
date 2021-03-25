@@ -921,6 +921,16 @@ nmap <C-c>i :PymodeRopeAutoImport<CR>
 " nmap <C-c>i :PymodeRopeAutoImport<CR>
 
 Plug 'vim-scripts/surround.vim'
+Plug 'tpope/vim-repeat'
+
+" TODO: investigate these pacakges
+" surround.vim
+" speeddating.vim
+" unimpaired.vim
+" vim-easyclip
+" vim-radical
+
+
 
 Plug 'vim-scripts/UltiSnips'
 Plug 'honza/vim-snippets'
