@@ -1,7 +1,15 @@
 ### Ubuntu 20.04 setup instructions
 Firefox DDG
 Tweeks remove icons from dekstop and animations
-sudo apt-get install vim vim-nox vim-gtk3 git  # Should better clone github.com/albertas/home instead of these commands
+
+
+# Prepare VIM and Git
+git clone https://github.com/albertas/home ~/home
+cd home
+make
+ln -s ~/home/ChangeLog ~/ChangeLog
+ln -s ~/home/.vimrc ~/.vimrc
+
 
 Xfce-Terminal - install, because it supports git grep selection
 Select dark theme Tweaks appereance
