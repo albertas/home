@@ -15,11 +15,9 @@ Xfce-Terminal - install, because it supports git grep selection
 Select dark theme Tweaks appereance
 vim ~/.config/xfce4/terminal/accels.scm
 (gtk_accel_path "<Actions>/terminal-window/contents" "")
-(gtk_accel_path "<Actions>/terminal-window/next-tab" "<Primary><Shift>j")
-(gtk_accel_path "<Actions>/terminal-window/prev-tab" "<Primary><Shift>k")
-(gtk_accel_path "<Actions>/terminal-window/next-tab" "<Alt>l")
-(gtk_accel_path "<Actions>/terminal-window/new-tab" "<Alt>j")
-(gtk_accel_path "<Actions>/terminal-window/prev-tab" "<Alt>h")
+(gtk_accel_path "<Actions>/terminal-window/next-tab" "<Alt>j")
+(gtk_accel_path "<Actions>/terminal-window/prev-tab" "<Alt>k")
+(gtk_accel_path "<Actions>/terminal-window/new-tab" "<Alt>o")
 
 
 install docker
