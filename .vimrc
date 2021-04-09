@@ -103,6 +103,22 @@ EOF
 endfunction
 
 
+
+function! ApplyBlackForCurrentFile()
+python3 << EOF
+import vim  # https://vimhelp.org/if_pyth.txt.html
+import pynvim
+
+cmd = 'te FORMAT_ME_PLEASE="%" make black'
+vim.command(cmd)
+vim.command('redraw!')
+
+EOF
+endfunction
+
+
+
+
 function! TestVS() range
     " This is an example how to get selection range in vimscript-Python
     let startline = line("'<")
@@ -324,7 +340,8 @@ map     <F6>        :BufExplorer<CR>j<CR>
 " vmap    <F6>        <ESC>:exec "'<,'>w !vpaste ".&ft<CR>
 nmap    <F7>        :call ToggleList("Quickfix List", 'c')<CR>
 " nmap    <F8>        :make!<CR>
-nmap    <F8>        <Plug>(ale_fix)
+" 
+nmap    <F8>        :w<CR>:call ApplyBlackForCurrentFile()<CR>
 nmap    <F11>       :set hlsearch!<CR>
 nmap    <F12>       :setlocal spell!<CR>
 " map    <SPACE>     ^   " Should better use default mappings
@@ -357,6 +374,8 @@ map     \           gc
 map     _           @q
 imap    <F10>       <nop>
 
+cmap     w           w!
+cmap     x           x!
 
 " TODO: Read more about this command :help 'langmap'
 " set langmap=ą1,č2,ę3,ė4,į5,š6,ų7,ū8,„9,“0,Ą!,Č@,Ę#,Ė$,Į%,Š^,Ų&,Ū*,ž=
@@ -382,26 +401,26 @@ map    Ū           *
 map    Ž           +
 
 " TODO: Read more amout mapping modes at :help map-modes
-" cmap    ą           1
-" cmap    č           2
-" cmap    ę           3
-" cmap    ė           4
-" cmap    į           5
-" cmap    š           6
-" cmap    ų           7
-" cmap    ū           8
-" cmap    „           9
-" cmap    “           0
-" cmap    ž           =
-" cmap    Ą           !
-" cmap    Č           @
-" cmap    Ę           #
-" cmap    Ė           $
-" cmap    Į           %
-" cmap    Š           ^
-" cmap    Ų           &
-" cmap    Ū           *
-" cmap    Ž           +
+cmap    ą           1
+cmap    č           2
+cmap    ę           3
+cmap    ė           4
+cmap    į           5
+cmap    š           6
+cmap    ų           7
+cmap    ū           8
+cmap    „           9
+cmap    “           0
+cmap    ž           =
+cmap    Ą           !
+cmap    Č           @
+cmap    Ę           #
+cmap    Ė           $
+cmap    Į           %
+cmap    Š           ^
+cmap    Ų           &
+cmap    Ū           *
+cmap    Ž           +
 
 
 " Jump between windows and tabs.
