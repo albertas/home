@@ -290,6 +290,16 @@ function! ToggleList(bufname, pfx)
 endfunction
 
 
+function! NERDTreeToggleCurrentFile()
+  " If NERDTree is open in the current buffer
+  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+    exe ":NERDTreeClose"
+  else
+    exe ":NERDTreeFind"
+  endif
+endfunction
+
+
 filetype plugin indent on
 syntax enable
 
@@ -305,7 +315,7 @@ nmap    <F2>        :update<CR>
 imap    <F2>        <ESC>:update<CR>a
 nmap    <F3>        :BufExplorer<CR>
 " nmap    <F4>        :call ToggleNERDTreeAndTagbar()<CR>
-nmap    <F4>        :NERDTreeToggle<CR>
+nmap    <F4>        :call NERDTreeToggleCurrentFile()<CR>
 nmap    <F5>        :cnext<CR>
 nmap    <S-F5>      :cprevious<CR>
 nmap    <C-F5>      :cc<CR>
