@@ -94,7 +94,7 @@ branch_name = 'ft/' + branch_name
 
 cmd = f"te git ch master && git pull && git ch -b {branch_name}"
 print('Running this command:')
-print('cmd')
+print(cmd)
 
 vim.command(cmd)
 vim.command('redraw!')
@@ -109,14 +109,11 @@ python3 << EOF
 import vim  # https://vimhelp.org/if_pyth.txt.html
 import pynvim
 
-cmd = 'te FORMAT_ME_PLEASE="%" make black'
+cmd = ':!FORMAT_ME_PLEASE="%" make black'
 vim.command(cmd)
-vim.command('redraw!')
 
 EOF
 endfunction
-
-
 
 
 function! TestVS() range
@@ -341,7 +338,7 @@ map     <F6>        :BufExplorer<CR>j<CR>
 nmap    <F7>        :call ToggleList("Quickfix List", 'c')<CR>
 " nmap    <F8>        :make!<CR>
 " 
-nmap    <F8>        :w<CR>:call ApplyBlackForCurrentFile()<CR>
+nmap    <F8>        :w<CR>:call ApplyBlackForCurrentFile()<CR>:e<CR>:w!<CR>
 nmap    <F11>       :set hlsearch!<CR>
 nmap    <F12>       :setlocal spell!<CR>
 " map    <SPACE>     ^   " Should better use default mappings
@@ -373,9 +370,6 @@ map     ;q          :call T('')<Left><Left>
 map     \           gc
 map     _           @q
 imap    <F10>       <nop>
-
-cmap     w           w!
-cmap     x           x!
 
 " TODO: Read more about this command :help 'langmap'
 " set langmap=ą1,č2,ę3,ė4,į5,š6,ų7,ū8,„9,“0,Ą!,Č@,Ę#,Ė$,Į%,Š^,Ų&,Ū*,ž=
